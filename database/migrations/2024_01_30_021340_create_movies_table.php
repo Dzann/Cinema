@@ -23,6 +23,7 @@ class CreateMoviesTable extends Migration
             $table->string('studio_name');
             $table->string('studio_capacity');
             $table->text('deskripsi');
+            $table->enum('status', ['ongoing', 'upcoming'])->default('ongoing');
             $table->timestamps();
         });
     }

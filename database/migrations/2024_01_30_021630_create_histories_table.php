@@ -18,10 +18,10 @@ class CreateHistoriesTable extends Migration
             $table->foreignId('movie_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('date');
             $table->string('time');
-            $table->string('total');
-            $table->string('change');
+            $table->integer('total');
+            $table->integer('change');
             $table->string('seats');
-            $table->string('cash');
+            $table->integer('cash');
             $table->timestamps();
         });
     }

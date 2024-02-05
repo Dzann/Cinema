@@ -45,6 +45,10 @@
                 <input type="text" name="studio_capacity"class="form-control">
                 <label for="">Sinopsis</label>
                 <input type="text" name="deskripsi"class="form-control">
+                <select name="status" id="">
+                    <option value="ongoing" {{ $movie->status === 'ongoing' ? 'selected' : '' }}>On Going</option>
+                    <option value="upcoming" {{ $movie->status === 'upcoming' ? 'selected' : '' }}>On Coming</option>
+                </select>
                 <div class="mt-4">
                     <button class="btn btn-success">Tambahkan Data</button>
                     <a href="{{ route('homeadmin') }}" class="btn btn-warning">Cancel (back)</a>

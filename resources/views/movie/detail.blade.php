@@ -10,8 +10,8 @@
             </div>
             <div class="col-5">
                 <h1>{{ $movie_name }}</h1>
-                <p>{{ $movie->genre->name }}</p>
-                <p>Sinopsis : </p>
+                <p class="text-danger">{{ $movie->genre->name }}</p>
+                <b>Sinopsis : </b>
                 <p>{{ $movie->deskripsi }}</p>
                 <div class="d-flex">
                     <a href="{{ route('seatSelection', ['movie_id' => $movie->id, 'time' => '13:00']) }}"

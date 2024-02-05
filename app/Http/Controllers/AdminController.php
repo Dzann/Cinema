@@ -17,10 +17,10 @@ class AdminController extends Controller
         $ticket = PurchaseTicket::all();
         return view('admin.homeadmin',compact('ticket'));
     }
-    public function tambahmovie()  
+    public function tambahmovie(Movie $movie)  
     {
         $genre = Genre::all();
-        return view('admin.tambahmovie', compact('genre'));
+        return view('admin.tambahmovie', compact('genre', 'movie'));
     }
     public function posttambahmovie(Request $request)  {
         $request->validate([
@@ -32,6 +32,7 @@ class AdminController extends Controller
             "studio_name" => "required",
             "studio_capacity" => "required",
             "deskripsi" => "required",
+            "status" => "required",
         ]);
         Movie::create([
             'name'=> $request->name,
@@ -42,6 +43,7 @@ class AdminController extends Controller
             'studio_name'=>$request->studio_name,
             'studio_capacity'=>$request->studio_capacity,
             'deskripsi' => $request->deskripsi,
+            'status' => $request->status,
         ]);
         return redirect()->route('homeadmin')->with('notif','Berhasil Tambah Movie');
 
@@ -63,6 +65,7 @@ class AdminController extends Controller
             "studio_name" => "required",
             "studio_capacity" => "required",
             "deskripsi" => "required",
+            'status' => 'required'
         ]);
         if ($request->hasFile('image')) {
             $data['image'] = $request->image->store('img');
@@ -74,7 +77,6 @@ class AdminController extends Controller
         return redirect()->route('homeadmin')->with('notif','Movie Berhasil di edit');
 
     }
-
 
     function hapus(movie $movie) {
         $movie->delete();

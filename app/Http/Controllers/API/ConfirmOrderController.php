@@ -82,7 +82,7 @@ class ConfirmOrderController extends Controller
                 ]);
     
                 $change = $cash - $total;
-                $total = number_format($total, 2, '.', ',');
+
     
                 $this->saveHistory($movie_id, date('Y-m-d'), $time, $total, $seats, $usercreate, $change, $cash);
     
@@ -110,9 +110,6 @@ class ConfirmOrderController extends Controller
     // Di dalam controller
     public function saveHistory($movieId, $date, $time, $total, $seats, $userId, $change, $cash)
     {
-        $change = number_format($change, 2, '.', ',');
-        $cash = number_format($cash, 2, '.', ',');
-
         $history = History::create([
             'movie_id' => $movieId,
             'date' => $date,
@@ -123,7 +120,6 @@ class ConfirmOrderController extends Controller
             'cash' => $cash,
             'created_by' => $userId,
         ]);
-
         return $history;
     }
 }

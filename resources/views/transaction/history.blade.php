@@ -24,6 +24,7 @@
                     <label for="" class="mt-2">Tanggal Akhir</label>
                     <input type="date" name="end_date" id="" class="form-control">
                     <button type="submit" href="" class="btn btn-warning w-100 mt-3">Cari Data</button>
+                    <b class="mt-4" >Total Pendapatan : Rp.{{ number_format($total, '0', ',', '.') }}</b>
                 </form>
             </div>
         </div>
@@ -47,9 +48,9 @@
                         <td>{{ $history->date }}</td>
                         <td>{{ $history->time }}</td>
                         <td>{{ $history->seats }}</td>
-                        <td>Rp. {{ $history->total }}</td>
-                        <td>Rp. {{ $history->cash }}</td>
-                        <td>Rp. {{ $history->change }}</td>
+                        <td>Rp. {{ number_format($history->total, '0', ',', '.') }}</td>
+                        <td>Rp. {{ number_format($history->cash, '0', ',', '.') }}</td>
+                        <td>Rp. {{ number_format($history->total, '0', ',', '.') }}</td>
                         <!-- Add other history details as needed -->
                     </tr>
                 @endforeach
