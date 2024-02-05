@@ -50,7 +50,7 @@
                         <td>{{ $history->seats }}</td>
                         <td>Rp. {{ number_format($history->total, '0', ',', '.') }}</td>
                         <td>Rp. {{ number_format($history->cash, '0', ',', '.') }}</td>
-                        <td>Rp. {{ number_format($history->total, '0', ',', '.') }}</td>
+                        <td>Rp. {{ number_format($history->change, '0', ',', '.') }}</td>
                         <!-- Add other history details as needed -->
                     </tr>
                 @endforeach

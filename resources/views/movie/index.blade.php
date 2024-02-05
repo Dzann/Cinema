@@ -1,6 +1,12 @@
 @extends('layout.app')
 @section('title', 'List-Movies')
 @section('body')
+<style>
+    .card:hover{
+        transform: scale(1.02);
+        box-shadow: 0 4px 0px
+    }
+</style>
     @include('layout.navigationbar')
     <main class="content py-4">
         <div class="container">
@@ -13,7 +19,7 @@
                             <div class="row d-flex mb-5">
                                 <center>
                                     @if (!auth()->user())
-                                        <div class="card">
+                                        <div class="card shadow">
                                             <a href="{{ route('login') }}"
                                                 style="text-decoration: none; color:rgb(202, 115, 10)" class="gagambar">
                                                 <img src="{{ $cinema->image }}" class="card-img-top" alt=""
@@ -24,7 +30,7 @@
                                         </div>
                                     @endif
                                     @if (auth()->user())
-                                        <div class="card">
+                                        <div class="card shadow">
                                             <a href="{{ route('detailmovie', $cinema->id) }}"
                                                 style="text-decoration: none; color:rgb(202, 115, 10)" class="gagambar">
                                                 <img src="{{ $cinema->image }}" class="card-img-top" alt=""
