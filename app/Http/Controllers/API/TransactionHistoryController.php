@@ -13,31 +13,6 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class TransactionHistoryController extends Controller
 {
-    // public function index(request $request)
-    // {
-    //     $token = $request->token;
-
-    //     if (!empty($token)) {
-    //         $user = User::where('remember_token', $token)->first();
-
-    //         if($user){
-    //             $purchase = Purchase::with('movie', 'ticket')->get();
-
-    //             return response()->json([
-    //                 'purchase' => $purchase
-    //             ]);
-    //         } else {
-    //             return response()->json([
-    //                 'message' => 'Anda tidak bisa mengakses ini'
-    //             ]);
-    //         }
-
-    //     } else {
-    //         return response()->json([
-    //             'message' => 'Parameter wajib di isi'
-    //         ]);
-    //     }
-    // }
 
     public function showPurchases()
     {

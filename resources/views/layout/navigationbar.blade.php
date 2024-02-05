@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg bg-warning text-dark">
     <div class="container">
         <!-- Brand Logo -->
         <a class="navbar-brand" href="{{ route('movie') }}">SiPalingCinema😜</a>

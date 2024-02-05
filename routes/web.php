@@ -24,40 +24,43 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [MovieController::class, 'showMovies'])->name('movie');
 Route::get('/login', [AuthController::class, 'index'])->name('formlogin');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/purchases', [TransactionHistoryController::class, 'showPurchases'])->name('history');
 
+Route::middleware(['auth'])->group(function () {
+    
+    Route::get('/purchases', [TransactionHistoryController::class, 'showPurchases'])->name('history');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::middleware(['checkRole:user'])->group( function() {
-    Route::get('/detailmovie/{movie}', [MovieController::class, 'detailmovie'])->name('detailmovie');
-    Route::get('change-password', [AuthController::class, 'changePassword'])->name('changePassword');
-    Route::post('update-Password', [AuthController::class, 'updatePassword'])->name('updatePassword');
-    Route::get('seat-selection', [SeatSelectionController::class, 'index'])->name('seatSelection');
-    Route::post('confirm-order', [ConfirmOrderController::class, 'index'])->name('confirmOrder');
-    Route::post('create-order', [ConfirmOrderController::class, 'order'])->name('createOrder');
-    Route::post('transac', [TransactionController::class, 'detail'])->name('transac');
-    Route::get('ticket', [TransactionHistoryController::class, 'ticket'])->name('ticket');
-
+    Route::middleware(['checkRole:user'])->group( function() {
+        Route::get('/detailmovie/{movie}', [MovieController::class, 'detailmovie'])->name('detailmovie');
+        Route::get('change-password', [AuthController::class, 'changePassword'])->name('changePassword');
+        Route::post('update-Password', [AuthController::class, 'updatePassword'])->name('updatePassword');
+        Route::get('seat-selection', [SeatSelectionController::class, 'index'])->name('seatSelection');
+        Route::post('confirm-order', [ConfirmOrderController::class, 'index'])->name('confirmOrder');
+        Route::post('create-order', [ConfirmOrderController::class, 'order'])->name('createOrder');
+        Route::get('ticket', [TransactionHistoryController::class, 'ticket'])->name('ticket');
+    
+    });
+    
+    
+    // Admin routes disini wak
+    Route::middleware(['checkRole:admin'])->group(function () {
+        Route::get('/admin/dashboard', [AdminController::class, 'homeadmin'])->name('homeadmin');
+        Route::get('/admin/tambahmovie', [AdminController::class, 'tambahmovie'])->name('tambahmovie');
+        Route::post('/admin/posttambahmovie', [AdminController::class, 'posttambahmovie'])->name('posttambahmovie');
+        Route::get('/admin/edit-{movie}', [AdminController::class, 'edit'])->name('edit');
+        Route::post('/admin/edit{movie}', [AdminController::class, 'editMovie'])->name('editMovie');
+        Route::get('/admin/hapus/{movie}', [AdminController::class, 'hapus'])->name('hapus');
+        Route::post('/admin/deleteterpilih', [AdminController::class, 'deleteterpilih'])->name('deleteterpilih');
+        Route::get('/admin/tambah-user', [AdminController::class, 'tambahuser'])->name('tambahuser');
+    
+    });
+    
+    Route::middleware(['checkRole:owner'])->group(function () {
+        Route::get('/owner-dashboard', [OwnerController::class, 'index'])->name('owner.dashboard');
+        Route::get('/owner-filter', [OwnerController::class, 'filter'])->name('filter');
+    });
 });
 
-
-// Admin routes disini wak
-Route::middleware(['checkRole:admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'homeadmin'])->name('homeadmin');
-    Route::get('/admin/tambahmovie', [AdminController::class, 'tambahmovie'])->name('tambahmovie');
-    Route::post('/admin/posttambahmovie', [AdminController::class, 'posttambahmovie'])->name('posttambahmovie');
-    Route::get('/admin/edit-{movie}', [AdminController::class, 'edit'])->name('edit');
-    Route::post('/admin/edit{movie}', [AdminController::class, 'editMovie'])->name('editMovie');
-    Route::get('/admin/hapus/{movie}', [AdminController::class, 'hapus'])->name('hapus');
-    Route::post('/admin/deleteterpilih', [AdminController::class, 'deleteterpilih'])->name('deleteterpilih');
-    Route::get('/admin/tambah-user', [AdminController::class, 'tambahuser'])->name('tambahuser');
-
-});
-
-Route::middleware(['checkRole:owner'])->group(function () {
-    Route::get('/owner-dashboard', [OwnerController::class, 'index'])->name('owner.dashboard');
-    Route::get('/owner-filter', [OwnerController::class, 'filter'])->name('filter');
-});
 
 
 

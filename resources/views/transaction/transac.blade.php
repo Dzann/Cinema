@@ -29,15 +29,13 @@
                             <div class="col text-start">{{ $seats }}</div>
                         </div>
                         <hr style="max-width: 400px" />
-
-                        <hr style="max-width: 400px" />
                         <div class="row py-1" style="max-width: 400px">
                             <div class="col-6 text-start" style="margin-left: 50px"><b>Kembalian</b></div>
                             <div class="col text-start"><b>{{ $kembalian }}</b></div>
                         </div>
                         <hr style="max-width: 400px" />
                         <a href="{{ route('movie') }}" class="btn btn-warning">Kembali Ke Menu</a>
-                        <a href="{{ route('ticket', ['id_movie'=> $movie_id, 'seats' => $seats, 'time' => $time]) }}" class="btn btn-secondary mt-3">Print Ticket</a>
+                        <a href="{{ route('ticket', ['id_movie'=> $movie_id, 'seats' => $seats, 'time' => $time]) }}" class="btn btn-secondary mt-1">Print Ticket</a>
                     </div>
                 </div>
             </main>

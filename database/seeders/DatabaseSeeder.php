@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
 
         $user = User::Create([
             'username' => 'kasir1',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('1'),
             'role' => 'user'
         ]);
         $user = User::Create([
@@ -65,7 +65,7 @@ class DatabaseSeeder extends Seeder
             'director' => 'asdds',
             'studio_name' => 'Anggrek',
             'studio_capacity' => '96',
-            'deskripsi' => 'berikut merupakan sinopsis dari film tersebut'
+            'deskripsi' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas et arcu non euismod. Aliquam luctus eleifend erat, eget suscipit ligula commodo id. Praesent accumsan ante a eleifend viverra. In placerat elit nec risus dignissim auctor. Sed tellus est, placerat vitae scelerisque non, sollicitudin non risus. Nulla in dui sed magna tempor vestibulum non a massa. Praesent consequat nibh auctor dolor sagittis, ac eleifend felis imperdiet. Nulla facilisi. Sed sed maximus nibh,'
         ]);
         Movie::create([
             'name' => 'Jujutsu Kaisen 0',
@@ -75,7 +75,7 @@ class DatabaseSeeder extends Seeder
             'director' => 'Gege Akutami',
             'studio_name' => 'MAPPA',
             'studio_capacity' => '96',
-            'deskripsi' => 'berikut merupakan sinopsis dari film tersebut'
+            'deskripsi' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas et arcu non euismod. Aliquam luctus eleifend erat, eget suscipit ligula commodo id. Praesent accumsan ante a eleifend viverra. In placerat elit nec risus dignissim auctor. Sed tellus est, placerat vitae scelerisque non, sollicitudin non risus. Nulla in dui sed magna tempor vestibulum non a massa. Praesent consequat nibh auctor dolor sagittis, ac eleifend felis imperdiet. Nulla facilisi. Sed sed maximus nibh,'
         ]);
 
         Purchase::create([

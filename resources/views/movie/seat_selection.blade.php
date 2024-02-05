@@ -11,7 +11,11 @@
         <h5 class="text-center text-muted mb-4">
             {{ $date }}<span class="mx-3">|</span> {{ $time_choose }}
         </h5>
-
+        <div class="card shadow m-5 p-2">
+            <div class="card-body">
+                <h2 class="text-center">Screen</h2>
+            </div>
+        </div>
         <form action="{{ route('confirmOrder', [
             'movie' => $movie[0]->id,
             'time_choose' => $time_choose
@@ -34,7 +38,7 @@
 
                             {{ in_array($seatType[$i].sprintf( "%02d", ($j + 1)), $seats_sold) ? 'disabled' : '' }}
                         />
-                        <label for="checkbox-{{$seatType[$i].sprintf( "%02d", ($j + 1))}}" class="btn {{ in_array($seatType[$i].sprintf( "%02d", ($j + 1)), $seats_sold) ? 'btn-light' : 'btn-dark' }}">{{$seatType[$i].sprintf( "%02d", ($j + 1))}}</label>
+                        <label for="checkbox-{{$seatType[$i].sprintf( "%02d", ($j + 1))}}" class="btn {{ in_array($seatType[$i].sprintf( "%02d", ($j + 1)), $seats_sold) ? 'btn-danger' : 'btn-dark' }}">{{$seatType[$i].sprintf( "%02d", ($j + 1))}}</label>
                     </div>
                     @endfor
                 </div>
@@ -50,7 +54,7 @@
 
                             {{ in_array($seatType[$i].sprintf( "%02d", ($j + 1)), $seats_sold) ? 'disabled' : '' }}
                         />
-                        <label for="checkbox-{{$seatType[$i].sprintf( "%02d", ($j + 1))}}" class="btn {{ in_array($seatType[$i].sprintf( "%02d", ($j + 1)), $seats_sold) ? 'btn-light' : 'btn-dark' }}">{{$seatType[$i].sprintf( "%02d", ($j + 1))}}</label>
+                        <label for="checkbox-{{$seatType[$i].sprintf( "%02d", ($j + 1))}}" class="btn {{ in_array($seatType[$i].sprintf( "%02d", ($j + 1)), $seats_sold) ? 'btn-danger' : 'btn-dark' }}">{{$seatType[$i].sprintf( "%02d", ($j + 1))}}</label>
                     </div>
                     @endfor
                 </div>

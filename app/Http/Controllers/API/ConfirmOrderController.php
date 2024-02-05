@@ -55,51 +55,51 @@ class ConfirmOrderController extends Controller
         // dd($request->all());
 
         if (!empty($movie_id) && !empty($time) && !empty($total) && !empty($cash)) {
-
             if ($cash < $total) {
-                return redirect()->back()->withErrors(['message' => 'Uang Anda Kurang']);
-            }
-            $purchase = Purchase::create([
-                'movie_id' => $movie_id,
-                'date' => date('Y-m-d'),
-                'time' => $time,
-                'total' => $total,
-                'cash' => $cash,
-                'created_by' => $usercreate,
-            ]);
-
-            $orders = explode(',', $request->seats);
-
-            foreach ($orders as $order) {
-                PurchaseTicket::create([
-                    'purchase_id' => $purchase->id,
-                    'seat' => $order,
+                return redirect()->back()->with(['message' => 'Uang Anda Kurang']);
+            } elseif ($cash > $total) {
+                $purchase = Purchase::create([
+                    'movie_id' => $movie_id,
+                    'date' => date('Y-m-d'),
+                    'time' => $time,
+                    'total' => $total,
+                    'cash' => $cash,
+                    'created_by' => $usercreate,
+                ]);
+    
+                $orders = explode(',', $request->seats);
+    
+                foreach ($orders as $order) {
+                    PurchaseTicket::create([
+                        'purchase_id' => $purchase->id,
+                        'seat' => $order,
+                    ]);
+                }
+    
+                Log::create([
+                    'activity' => 'melakukan transaksi',
+                    'user_id' => auth()->user()->id,
+                ]);
+    
+                $change = $cash - $total;
+                $total = number_format($total, 2, '.', ',');
+    
+                $this->saveHistory($movie_id, date('Y-m-d'), $time, $total, $seats, $usercreate, $change);
+    
+                return view('transaction.transac', [
+                    'movie_name' => $movie_name,
+                    'movie_id' => $movie_id,
+                    'date' => date('Y-m-d'),
+                    'time' => $time,
+                    'total' => $total,
+                    'cash' => $cash,
+                    'seats' => $seats,
+                    'kembalian' => $change,
+                    'id' => $purchase->id,
+                    'message' => 'pesanan berhasil dibuat!',
+    
                 ]);
             }
-
-            Log::create([
-                'activity' => 'melakukan transaksi',
-                'user_id' => auth()->user()->id,
-            ]);
-
-            $change = $cash - $total;
-            $total = number_format($total, 2, '.', ',');
-
-            $this->saveHistory($movie_id, date('Y-m-d'), $time, $total, $seats, $usercreate, $change);
-
-            return view('transaction.transac', [
-                'movie_name' => $movie_name,
-                'movie_id' => $movie_id,
-                'date' => date('Y-m-d'),
-                'time' => $time,
-                'total' => $total,
-                'cash' => $cash,
-                'seats' => $seats,
-                'kembalian' => $change,
-                'id' => $purchase->id,
-                'message' => 'pesanan berhasil dibuat!',
-
-            ]);
         } else {
             return response()->json([
                 'message' => 'parameter wajib diisi'

@@ -11,16 +11,18 @@
             <div class="col-5">
                 <h1>{{ $movie_name }}</h1>
                 <p>{{ $movie->genre->name }}</p>
+                <p>Sinopsis : </p>
+                <p>{{ $movie->deskripsi }}</p>
                 <div class="d-flex">
-                    <a href="{{ route('seatSelection', ['movie_id' => $movie->id, 'time' => '13:00', 'token' => Auth::user()->remember_token]) }}"
-                        class="btn btn-light me-3">13:00</a>
-                    <a href="{{ route('seatSelection', ['movie_id' => $movie->id, 'time' => '16:00', 'token' => Auth::user()->remember_token]) }}"
-                        class="btn btn-light me-3">16:00</a>
-                    <a href="{{ route('seatSelection', ['movie_id' => $movie->id, 'time' => '19:00', 'token' => Auth::user()->remember_token]) }}"
-                        class="btn btn-light me-3">19:00</a>
-                    <a href="{{ route('seatSelection', ['movie_id' => $movie->id, 'time' => '21:00', 'token' => Auth::user()->remember_token]) }}"
-                        class="btn btn-light me-3">21:00</a>
-                </div>
+                    <a href="{{ route('seatSelection', ['movie_id' => $movie->id, 'time' => '13:00']) }}"
+                        class="btn btn-warning me-3">13:00</a>
+                    <a href="{{ route('seatSelection', ['movie_id' => $movie->id, 'time' => '16:00']) }}"
+                        class="btn btn-warning me-3">16:00</a>
+                    <a href="{{ route('seatSelection', ['movie_id' => $movie->id, 'time' => '19:00']) }}"
+                        class="btn btn-warning me-3">19:00</a>
+                    <a href="{{ route('seatSelection', ['movie_id' => $movie->id, 'time' => '21:00']) }}"
+                        class="btn btn-warning me-3">21:00</a>
+                </div>                
             </div>
             <div class="col-4">
 

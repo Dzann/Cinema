@@ -7,6 +7,9 @@
     <title>@yield('title') - SiPalingCinema😜</title>
     <link href={{ asset('css/bootstrap.css') }} rel="stylesheet">
     <link href={{ asset('css/style.css') }} rel="stylesheet">
+    <style>
+        
+    </style>
 </head>
 <body>
     @yield('body')
