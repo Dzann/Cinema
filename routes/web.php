@@ -28,6 +28,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::middleware(['auth'])->group(function () {
     
     Route::get('/purchases', [TransactionHistoryController::class, 'showPurchases'])->name('history');
+    Route::get('/filtered-Chart', [TransactionHistoryController::class, 'filteredChart'])->name('filteredChart');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::middleware(['checkRole:user'])->group( function() {

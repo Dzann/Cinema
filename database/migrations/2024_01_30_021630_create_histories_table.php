@@ -21,6 +21,7 @@ class CreateHistoriesTable extends Migration
             $table->string('total');
             $table->string('change');
             $table->string('seats');
+            $table->string('cash');
             $table->timestamps();
         });
     }
