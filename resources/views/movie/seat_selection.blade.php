@@ -62,7 +62,7 @@
             @endfor
             {{-- <input type="hidden" name="token" value="{{ csrf_token() }}"> --}}
             <input type="hidden" name ="seats" id="seats_selected">
-            <div class="text-center my-5">
+            <div class="text-center my-5">  
                 <button type="submit" class="btn btn-warning" value="button">
                     Selesai memilih
                 </button>

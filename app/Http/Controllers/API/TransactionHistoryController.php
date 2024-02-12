@@ -12,6 +12,7 @@ use ArielMejiaDev\LarapexCharts\LarapexChart;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
+use ZipArchive;
 
 class TransactionHistoryController extends Controller
 {
@@ -49,6 +50,8 @@ class TransactionHistoryController extends Controller
         $purchase = Purchase::where(['movie_id' => $request->id_movie, 'time' => $request->time])->with(['ticket', 'movie'])->first();
         $ticket = PurchaseTicket::where('purchase_id', $purchase->id)->whereIn('seat', $seat)->get();
 
+        $pdfs = [];
+
         foreach ($ticket as $tick) {
             $invoice = [
                 'ticket' => $tick,
@@ -57,9 +60,12 @@ class TransactionHistoryController extends Controller
             ];
 
             $pdf = PDF::loadView('template.ticket', $invoice);
-            return $pdf->download('Ticket' . $tick->id . '.pdf');
+            return $pdf->download('Ticket' . $tick->id . '.pdf'); 
         }
+
     }
+
+
 
     public function filteredChart(Request $request)
     {
@@ -70,7 +76,7 @@ class TransactionHistoryController extends Controller
         $end = \Carbon\Carbon::parse($end)->endOfDay();
 
         $histories = History::with('movie')->get();
-        
+
         $histories = History::whereBetween('created_at', [$start, $end])->get();
         $date = $histories->pluck('created_at')->map(function ($date) {
             return \Carbon\Carbon::parse($date)->format('Y-m-d');

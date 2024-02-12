@@ -13,6 +13,7 @@
                 <p class="text-danger">{{ $movie->genre->name }}</p>
                 <b>Sinopsis : </b>
                 <p>{{ $movie->deskripsi }}</p>
+                <hr>
                 <div class="d-flex">
                     <a href="{{ route('seatSelection', ['movie_id' => $movie->id, 'time' => '13:00']) }}"
                         class="btn btn-warning me-3">13:00</a>
@@ -22,10 +23,7 @@
                         class="btn btn-warning me-3">19:00</a>
                     <a href="{{ route('seatSelection', ['movie_id' => $movie->id, 'time' => '21:00']) }}"
                         class="btn btn-warning me-3">21:00</a>
-                </div>                
-            </div>
-            <div class="col-4">
-
+                </div>
             </div>
         </div>
     </div>
