@@ -10,6 +10,7 @@ use App\Models\Purchase;
 use App\Models\PurchaseTicket;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ConfirmOrderController extends Controller
 {
@@ -56,7 +57,7 @@ class ConfirmOrderController extends Controller
 
         if (!empty($movie_id) && !empty($time) && !empty($total) && !empty($cash)) {
             if ($cash < $total) {
-                return redirect()->back()->with(['message' => 'Uang Anda Kurang']);
+                return back()->withErrors(['message' => 'Uang Anda Kurang']);            
             } elseif ($cash > $total) {
                 $purchase = Purchase::create([
                     'movie_id' => $movie_id,
@@ -101,7 +102,7 @@ class ConfirmOrderController extends Controller
                 ]);
             }
         } else {
-            return response()->json([
+            return redirect()->back()->with([
                 'message' => 'parameter wajib diisi'
             ]);
         }

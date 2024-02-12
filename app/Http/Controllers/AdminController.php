@@ -59,7 +59,7 @@ class AdminController extends Controller
         $data =  $request->validate([
             "name" => "required",
             "genre_id" => "required",
-            "image" => "required",
+            "image" => "",
             "minutes" => "required",
             "director" => "required",
             "studio_name" => "required",
