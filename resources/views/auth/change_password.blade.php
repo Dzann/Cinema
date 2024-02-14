@@ -3,18 +3,13 @@
 @section('title', 'Ganti password')
     
 @section('body')
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg bg-info text-dark">
     <div class="container">
         <a class="navbar-brand" href="list-movies.html">OriCinema</a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('movie') }}">
                     List Film
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="transaction-histories.html">
-                    Riwayat Transaksi
                 </a>
             </li>
         </ul>
@@ -62,7 +57,7 @@
                                     class="form-control"
                                 />
                             </div>
-                            <button type="submit" class="btn btn-warning">
+                            <button type="submit" class="btn btn-info">
                                 Update Password
                             </button>
                         </form>

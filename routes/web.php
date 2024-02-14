@@ -29,15 +29,17 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('/purchases', [TransactionHistoryController::class, 'showPurchases'])->name('history');
     Route::get('/filtered-Chart', [TransactionHistoryController::class, 'filteredChart'])->name('filteredChart');
+    Route::get('historyPDF', [TransactionHistoryController::class, 'filterPdf'])->name('filterPdf');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('change-password', [AuthController::class, 'changePassword'])->name('changePassword');
+    Route::post('update-Password', [AuthController::class, 'updatePassword'])->name('updatePassword');
 
     Route::middleware(['checkRole:user'])->group( function() {
         Route::get('/detailmovie/{movie}', [MovieController::class, 'detailmovie'])->name('detailmovie');
-        Route::get('change-password', [AuthController::class, 'changePassword'])->name('changePassword');
-        Route::post('update-Password', [AuthController::class, 'updatePassword'])->name('updatePassword');
         Route::get('seat-selection', [SeatSelectionController::class, 'index'])->name('seatSelection');
         Route::post('confirm-order', [ConfirmOrderController::class, 'index'])->name('confirmOrder');
         Route::post('create-order', [ConfirmOrderController::class, 'order'])->name('createOrder');
+        Route::get('transaction/{id}', [ConfirmOrderController::class, 'show'])->name('transaction');
         Route::get('ticket', [TransactionHistoryController::class, 'ticket'])->name('ticket');
     
     });

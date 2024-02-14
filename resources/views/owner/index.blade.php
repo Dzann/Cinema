@@ -24,7 +24,7 @@
                     <input type="date" name="end_date" id="" class="form-control">
                 </div>
             </div>
-            <button type="submit" href="" class="btn btn-warning mb-4">Cari Data</button>
+            <button type="submit" href="" class="btn btn-info mb-4">Cari Data</button>
         </form>
         <table class="table table-bordered mt-3" id="example">
             <thead class="thead-dark">

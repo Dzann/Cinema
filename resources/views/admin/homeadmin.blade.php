@@ -33,7 +33,7 @@
 
     <div class="container mt-4" style="align-items: center">
         <h2 class="text-center">Home Admin</h2>
-        <a href="{{ route('tambahmovie') }}" class="btn bg-warning mt-2" style="margin-left: 20px">Tambah Movie</a>
+        <a href="{{ route('tambahmovie') }}" class="btn bg-info mt-2" style="margin-left: 20px">Tambah Movie</a>
     </div>
     <div class="container mt-3 mb-5">
         <div class="card mt-1"
@@ -71,7 +71,7 @@
                             <td>{{ $d->studio_name }}</td>
                             <td>
                                 <div class="d-flex gap-1">
-                                    <a href="{{ route('edit', $d->id) }}" class="btn btn-warning ">Edit</a>
+                                    <a href="{{ route('edit', $d->id) }}" class="btn btn-info ">Edit</a>
                                     <a href="{{ route('hapus', $d->id) }}" class="btn btn-secondary"
                                         onclick="return-confirm('Yakin mau hapus data ini yagesya?')">Hapus</a>
                                 </div>
@@ -81,14 +81,9 @@
                 </tbody>
             </table>
         </div>
-        @if (Session::has('notif'))
-            <p style="color:blueviolet">{{ Session::get('notif') }}</p>
-        @endif
     </div>
     <script>
-        new DataTable('#example', {
-            responsive: true
-        });
+        new DataTable('#example');
 
         // $(document).ready(function () {
         //     // Check All button

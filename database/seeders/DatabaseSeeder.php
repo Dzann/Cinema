@@ -55,6 +55,9 @@ class DatabaseSeeder extends Seeder
         Genre::create([
             'name' => 'Music'
         ]);
+        Genre::create([
+            'name' => 'Comedy'
+        ]);
 
 
         Movie::create([
@@ -75,6 +78,17 @@ class DatabaseSeeder extends Seeder
             'minutes' => '105',
             'director' => 'Gege Akutami',
             'studio_name' => 'MAPPA',
+            'studio_capacity' => '96',
+            'status' => 'onGoing',
+            'deskripsi' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas et arcu non euismod. Aliquam luctus eleifend erat, eget suscipit ligula commodo id. Praesent accumsan ante a eleifend viverra. In placerat elit nec risus dignissim auctor. Sed tellus est, placerat vitae scelerisque non, sollicitudin non risus. Nulla in dui sed magna tempor vestibulum non a massa. Praesent consequat nibh auctor dolor sagittis, ac eleifend felis imperdiet. Nulla facilisi. Sed sed maximus nibh,'
+        ]);
+        Movie::create([
+            'name' => 'Spy x Family Code White',
+            'genre_id' => 5,
+            'image' => 'img/anya.jpg',
+            'minutes' => '120',
+            'director' => 'Takashi Katagiri',
+            'studio_name' => 'WIT Studio & Clover Works',
             'studio_capacity' => '96',
             'status' => 'onGoing',
             'deskripsi' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas et arcu non euismod. Aliquam luctus eleifend erat, eget suscipit ligula commodo id. Praesent accumsan ante a eleifend viverra. In placerat elit nec risus dignissim auctor. Sed tellus est, placerat vitae scelerisque non, sollicitudin non risus. Nulla in dui sed magna tempor vestibulum non a massa. Praesent consequat nibh auctor dolor sagittis, ac eleifend felis imperdiet. Nulla facilisi. Sed sed maximus nibh,'

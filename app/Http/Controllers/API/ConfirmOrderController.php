@@ -50,7 +50,6 @@ class ConfirmOrderController extends Controller
         $total = $request->total;
         $seats = $request->seats;
         $cash = $request->cash;
-        $token = $request->input('_token');
         $usercreate = $users['id'];
 
         // dd($request->all());
@@ -58,7 +57,7 @@ class ConfirmOrderController extends Controller
         if (!empty($movie_id) && !empty($time) && !empty($total) && !empty($cash)) {
             if ($cash < $total) {
                 return back()->withErrors(['message' => 'Uang Anda Kurang']);            
-            } elseif ($cash > $total) {
+            } elseif ($cash >= $total) {
                 $purchase = Purchase::create([
                     'movie_id' => $movie_id,
                     'date' => date('Y-m-d'),
@@ -100,6 +99,19 @@ class ConfirmOrderController extends Controller
                     'message' => 'pesanan berhasil dibuat!',
     
                 ]);
+                // return redirect()->route('transaction', [
+                //     'id' => $purchase->id,
+                //     'time' => $time, // Tambahkan variabel $time ke dalam array parameter
+                //     'message' => 'Pesanan berhasil dibuat',
+                //     'movie_name' => $movie_name,
+                //     'movie_id' => $movie_id,
+                //     'date' => date('Y-m-d'),
+                //     'total' => $total,
+                //     'cash' => $cash,
+                //     'seats' => $seats,
+                //     'kembalian' => $change,
+                // ]);
+                
             }
         } else {
             return redirect()->back()->with([
@@ -109,6 +121,22 @@ class ConfirmOrderController extends Controller
     }
 
     // Di dalam controller
+    
+    public function show($id)
+    {
+        $purchase = Purchase::findOrFail($id); // Mengambil data pembelian berdasarkan ID
+        // Tampilkan halaman transaction.transac dengan data pembelian yang diperoleh
+        return view('transaction.transac', [
+            'purchase' => $purchase,
+            'movie_id' => $purchase->movie_id,
+            'movie_name' => $purchase->movie->name,
+            'time' => $purchase->time,
+            'seats' => $purchase->purchaseTicket->seats,
+
+            
+        ]);
+    }
+    
     public function saveHistory($movieId, $date, $time, $total, $seats, $userId, $change, $cash)
     {
         $history = History::create([

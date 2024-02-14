@@ -12,6 +12,8 @@ use ArielMejiaDev\LarapexCharts\LarapexChart;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use ZipArchive;
 
 class TransactionHistoryController extends Controller
@@ -44,28 +46,21 @@ class TransactionHistoryController extends Controller
         return view('transaction.history', ['histories' => $histories, 'chart' => $chart, 'total' => $totalProfit]);
     }
 
-    public function ticket(Request $request)
+    public function filterPdf(Request $request)
     {
-        $seat = explode(',', $request->seats);
-        $purchase = Purchase::where(['movie_id' => $request->id_movie, 'time' => $request->time])->with(['ticket', 'movie'])->first();
-        $ticket = PurchaseTicket::where('purchase_id', $purchase->id)->whereIn('seat', $seat)->get();
+        $start = $request->input('start_date');
+        $end = $request->input('end_date');
 
-        $pdfs = [];
+        $start = \Carbon\Carbon::parse($start)->startOfDay();
+        $end = \Carbon\Carbon::parse($end)->endOfDay();
 
-        foreach ($ticket as $tick) {
-            $invoice = [
-                'ticket' => $tick,
-                'purchase' => $purchase,
-                'seat' => $request->seats
-            ];
+        $histories = History::with('movie')->get();
 
-            $pdf = PDF::loadView('template.ticket', $invoice);
-            return $pdf->download('Ticket' . $tick->id . '.pdf'); 
-        }
+        $histories = History::whereBetween('created_at', [$start, $end])->get();
 
+        $pdf = PDF::loadView('template.histories', compact('histories'));
+        return $pdf->download('History Transaksi.pdf');
     }
-
-
 
     public function filteredChart(Request $request)
     {
@@ -99,4 +94,27 @@ class TransactionHistoryController extends Controller
 
         return view('transaction.history', ['histories' => $histories, 'chart' => $chart, 'total' => $totalProfit]);
     }
+    
+    public function ticket(Request $request)
+    {
+        $seats = explode(',', $request->seats);
+        $purchase = Purchase::where(['movie_id' => $request->id_movie, 'time' => $request->time])->with(['ticket', 'movie'])->latest()->first();
+
+        $tickets = [];
+
+        foreach ($seats as $seat) {
+            $ticket = PurchaseTicket::where('purchase_id', $purchase->id)->where('seat', $seat)->first();
+            if ($ticket) {
+                $tickets[] = $ticket;
+            }
+        }
+        if (!empty($tickets)) {
+            $pdf = PDF::loadView('template.ticket', compact('tickets', 'purchase'));
+            return $pdf->download('Ticket.pdf'); 
+            // # code...
+        } else {
+            return response()->json(['message' => 'Ticket tidak tersedia']);
+        }
+    }
+
 }

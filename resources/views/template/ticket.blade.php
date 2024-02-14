@@ -65,6 +65,7 @@
 <body>
 
     <div class="invoice-container">
+        @foreach ($tickets as $ticket)
         <div class="invoice-card">
             <div class="invoice-header">
                 <h2>{{ $purchase->movie->name }}</h2>
@@ -73,9 +74,11 @@
                 <p><strong>Tanggal:</strong>{{ $ticket->created_at}}</p>
                 <p><strong>Film</strong>{{ $purchase->movie->name }}</p>
                 <p><strong>Waktu</strong>{{ $purchase->time }}</p>
-                <p><strong>Seats yang Dipilih:</strong>{{ $seat }} </p>
+                <p><strong>Seats :</strong>{{ $ticket->seat }} </p>
             </div>
         </div>
+            
+        @endforeach
     </div>
     
 

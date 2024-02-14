@@ -52,7 +52,7 @@
                     <hr style="max-width: 400px" />
                     <div class="row py-1" style="max-width: 400px">
                         <div class="col-6 text-start"><b>Total Bayar</b></div>
-                        <div class="col text-start"><b>{{ $total }}</b></div>
+                        <div class="col text-start text-danger"><b>{{ $total }}</b></div>
                     </div>
                     <hr style="max-width: 400px" />
                     <div class="row py-1 d-flex align-items-center" style="max-width: 400px">
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                 </form>
-                <button type="submit" class="btn btn-warning mt-4" onclick="cekBayar()">Bayar</button>
+                <button type="submit" class="btn btn-info mt-4" onclick="cekBayar()">Bayar</button>
             </div>
         </div>
     </main>
@@ -71,7 +71,10 @@
         let createOrder = document.getElementById('createOrder');
         let totalBayar = {{ $total }}
         function cekBayar() {
-            if (uangBayar.value > totalBayar) {
+
+            let uangBayarValue = parseFloat(uangBayar.value);
+
+            if (uangBayarValue >= totalBayar) {
                 createOrder.submit();
             } else {
                 alert('Uang anda kurang');

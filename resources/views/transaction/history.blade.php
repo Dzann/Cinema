@@ -19,15 +19,26 @@
             <div class="col-4">
                 <form action="{{ route('filteredChart') }}" method="get" class="form-group mt-4">
                     @csrf
+                    <h5 class="text-center">Filter Tanggal</h3>
+                        <label for="" class="mt-2">Tanggal Awal</label>
+                        <input type="date" name="start_date" id="" class="form-control">
+                        <label for="" class="mt-2">Tanggal Akhir</label>
+                        <input type="date" name="end_date" id="" class="form-control">
+                        <button type="submit" href="" class="btn btn-info w-100 mt-3">Cari Data</button>
+                        {{-- <b class="mt-4">Total Pendapatan : Rp.{{ number_format($total, '0', ',', '.') }}</b> --}}
+                </form>
+                <form action="{{ route('filterPdf') }}" method="get" class="form-group mt-4">
+                    @csrf
+                    <h5 class="text-center">Filter Download</h3>
                     <label for="" class="mt-2">Tanggal Awal</label>
                     <input type="date" name="start_date" id="" class="form-control">
                     <label for="" class="mt-2">Tanggal Akhir</label>
                     <input type="date" name="end_date" id="" class="form-control">
-                    <button type="submit" href="" class="btn btn-warning w-100 mt-3">Cari Data</button>
-                    <b class="mt-4" >Total Pendapatan : Rp.{{ number_format($total, '0', ',', '.') }}</b>
+                    <button type="submit" href="" class="btn btn-danger w-100 mt-2 mb-3">Download Data</button>
                 </form>
             </div>
         </div>
+        <b class="mt-4">Total Pendapatan : Rp.{{ number_format($total, '0', ',', '.') }}</b>
         <table class="table table-bordered mt-3" id="example">
             <thead class="thead-dark">
                 <tr>
@@ -58,17 +69,16 @@
         </table>
     </div>
 
+    <script src="{{ $chart->cdn() }}"></script>
 
+    <script src="{{ asset('js/jquery-3.7.0.js') }}"></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('js/responsive.bootstrap5.min.js') }}"></script>
+    <script>
+        new DataTable('#example');
+    </script>
 
-        <script src="{{ $chart->cdn() }}"></script>
-
-        <script src="{{ asset('js/jquery-3.7.0.js') }}"></script>
-        <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ asset('js/dataTables.bootstrap5.min.js') }}"></script>
-        <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
-        <script src="{{ asset('js/responsive.bootstrap5.min.js') }}"></script>
-        <script>
-            new DataTable('#example');
-        </script>
-        {{ $chart->script() }}
-    @endsection
+    {{ $chart->script() }}
+@endsection

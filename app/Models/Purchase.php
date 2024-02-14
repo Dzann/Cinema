@@ -12,11 +12,11 @@ class Purchase extends Model
 
     public function movie()
     {
-        return $this -> belongsTo(Movie::class);
+        return $this->belongsTo(Movie::class);
     }
 
     public function ticket()
     {
-        return $this -> hasMany(PurchaseTicket::class);
+        return $this->hasMany(PurchaseTicket::class);
     }
 }

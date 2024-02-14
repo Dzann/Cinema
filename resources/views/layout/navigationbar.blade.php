@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg bg-warning text-dark">
+<nav class="navbar navbar-expand-lg bg-info text-dark">
     <div class="container">
         <!-- Brand Logo -->
-        <a class="navbar-brand" href="{{ route('movie') }}">SiPalingCinema😜</a>
+        <a class="navbar-brand" href="{{ route('movie') }}">OriCinema🔥</a>
 
         <!-- Left Side Navigation Links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
