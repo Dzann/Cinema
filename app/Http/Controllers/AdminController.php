@@ -70,12 +70,11 @@ class AdminController extends Controller
         if ($request->hasFile('image')) {
             $data['image'] = $request->image->store('img');
         } else {
-            unset($data);
+            unset($data['image']);
         }
         $movie->update($data);
         
         return redirect()->route('homeadmin')->with('notif','Movie Berhasil di edit');
-
     }
 
     function hapus(movie $movie) {

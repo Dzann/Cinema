@@ -55,10 +55,13 @@ class TransactionHistoryController extends Controller
         $end = \Carbon\Carbon::parse($end)->endOfDay();
 
         $histories = History::with('movie')->get();
-
+        
         $histories = History::whereBetween('created_at', [$start, $end])->get();
+        $profit = $histories->pluck('total')->toArray();
 
-        $pdf = PDF::loadView('template.histories', compact('histories'));
+        $totalProfit = array_sum($profit);
+
+        $pdf = PDF::loadView('template.histories', compact('histories', 'totalProfit'));
         return $pdf->download('History Transaksi.pdf');
     }
 

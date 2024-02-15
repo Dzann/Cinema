@@ -27,18 +27,25 @@
                         <button type="submit" href="" class="btn btn-info w-100 mt-3">Cari Data</button>
                         {{-- <b class="mt-4">Total Pendapatan : Rp.{{ number_format($total, '0', ',', '.') }}</b> --}}
                 </form>
-                <form action="{{ route('filterPdf') }}" method="get" class="form-group mt-4">
-                    @csrf
-                    <h5 class="text-center">Filter Download</h3>
-                    <label for="" class="mt-2">Tanggal Awal</label>
-                    <input type="date" name="start_date" id="" class="form-control">
-                    <label for="" class="mt-2">Tanggal Akhir</label>
-                    <input type="date" name="end_date" id="" class="form-control">
-                    <button type="submit" href="" class="btn btn-danger w-100 mt-2 mb-3">Download Data</button>
-                </form>
+                @if (auth()->user())
+                    <form action="{{ route('filterPdf') }}" method="get" class="form-group mt-4">
+                        @csrf
+                        <h5 class="text-center">Filter Download</h3>
+                            <label for="" class="mt-2">Tanggal Awal</label>
+                            <input type="date" name="start_date" id="" class="form-control">
+                            <label for="" class="mt-2">Tanggal Akhir</label>
+                            <input type="date" name="end_date" id="" class="form-control">
+                            <button type="submit" href="" class="btn btn-danger w-100 mt-2 mb-3">Download
+                                Data</button>
+                    </form>
+                @endif
             </div>
         </div>
-        <b class="mt-4">Total Pendapatan : Rp.{{ number_format($total, '0', ',', '.') }}</b>
+        <p class="mt-4">Total Pendapatan :
+            <b>
+                Rp.{{ number_format($total, '0', ',', '.') }}
+            </b>
+        </p>
         <table class="table table-bordered mt-3" id="example">
             <thead class="thead-dark">
                 <tr>

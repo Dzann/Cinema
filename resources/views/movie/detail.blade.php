@@ -10,7 +10,8 @@
             </div>
             <div class="col-5">
                 <h1>{{ $movie_name }}</h1>
-                <p class="text-danger">{{ $movie->genre->name }}</p>
+                <p class="text-dark">Genre : <b class="text-danger">{{ $movie->genre->name }}</b></p>
+                <p class="text-dark">Studio : <b class="text-danger">{{ $movie->studio_name }}</b></p>
                 <b class="card-title">Sinopsis : </b>
                 <p class="card-text">{{ $movie->deskripsi }}</p>
                 <hr>

@@ -8,7 +8,9 @@
     <link href={{ asset('css/bootstrap.css') }} rel="stylesheet">
     <link href={{ asset('css/style.css') }} rel="stylesheet">
     <style>
-        
+        body{
+            background-color: #dcdcdc;
+        }
     </style>
 </head>
 <body>

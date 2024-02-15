@@ -40,6 +40,8 @@
 <body>
     <div class="container">
         <h1>Movie Tickets</h1>
+        <b>Total Pendapatan : Rp. {{ number_format($totalProfit, '0', ',', '.') }}</b>
+        <br>
         <table>
             <thead>
                 <tr>
