@@ -14,6 +14,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Illuminate\Support\Facades\DB;
 use ZipArchive;
 
 class TransactionHistoryController extends Controller
@@ -23,18 +24,28 @@ class TransactionHistoryController extends Controller
     {
         $histories = History::with('movie')->get();
 
-        $tanggal = $histories->pluck('created_at')->map(function ($date) {
+        $groupedHistories = $histories->groupBy(function ($history) {
+            return \Carbon\Carbon::parse($history->created_at)->format('d-m-Y');
+        })->map(function ($dailyHistories) {
+            return [
+                'date' => $dailyHistories->first()->created_at, // Use any date from the group
+                'total' => $dailyHistories->sum('total'),
+            ];
+        });
+
+        $date = $groupedHistories->pluck('date')->map(function ($date) {
             return \Carbon\Carbon::parse($date)->format('d-m-Y');
         })->toArray();
 
-        $profit = $histories->pluck('total')->toArray();
+        $profit = $groupedHistories->pluck('total')->toArray();
 
         $totalProfit = array_sum($profit);
 
+        // dd($histories);
         $chart = (new LarapexChart)->setType('area')
             ->setTitle('History')
-            ->setSubtitle('From transaction on this day')
-            ->setXAxis($tanggal)
+            ->setSubtitle('History Transaction')
+            ->setXAxis($date)
             ->setDataset([
                 [
                     'name' => 'Income',
@@ -75,18 +86,27 @@ class TransactionHistoryController extends Controller
 
         $histories = History::with('movie')->get();
 
+        
         $histories = History::whereBetween('created_at', [$start, $end])->get();
-        $date = $histories->pluck('created_at')->map(function ($date) {
+        $groupedHistories = $histories->groupBy(function ($history) {
+            return \Carbon\Carbon::parse($history->created_at)->format('d-m-Y');
+        })->map(function ($dailyHistories) {
+            return [
+                'date' => $dailyHistories->first()->created_at, // Use any date from the group
+                'total' => $dailyHistories->sum('total'),
+            ];
+        });
+        $date = $groupedHistories->pluck('created_at')->map(function ($date) {
             return \Carbon\Carbon::parse($date)->format('Y-m-d');
         })->toArray();
 
-        $profit = $histories->pluck('total')->toArray();
+        $profit = $groupedHistories->pluck('total')->toArray();
 
         $totalProfit = array_sum($profit);
 
         $chart = (new LarapexChart)->setType('area')
             ->setTitle('History')
-            ->setSubtitle('From transaction on this day')
+            ->setSubtitle('History Transaction')
             ->setXAxis($date)
             ->setDataset([
                 [

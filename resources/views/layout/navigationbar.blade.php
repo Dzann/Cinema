@@ -1,21 +1,21 @@
 
-<nav class="navbar navbar-expand-lg bg-info text-dark">
+<nav class="navbar navbar-expand-lg " style="background-color: #003b6d">
     <div class="container">
         <!-- Brand Logo -->
-        <a class="navbar-brand" href="{{ route('movie') }}">OriCinema🔥</a>
+        <a class="navbar-brand text-light" href="{{ route('movie') }}">OriCinema🔥</a>
 
         <!-- Left Side Navigation Links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('movie') }}">List Film</a>
+                    <a class="nav-link text-light" href="{{ route('movie') }}">List Film</a>
                 </li>
             @else
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('movie') }}">List Film</a>
+                    <a class="nav-link text-light" href="{{ route('movie') }}">List Film</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('history') }}">Riwayat Transaksi</a>
+                    <a class="nav-link text-light" href="{{ route('history') }}">Riwayat Transaksi</a>
                 </li>
             @endguest
         </ul>
@@ -28,7 +28,7 @@
             @endif
             @if (auth()->user())
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="userDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ Auth::user()->username }}
                     </a>
@@ -42,24 +42,24 @@
             <!-- Admin Dropdown (if user is an admin) -->
             @if (auth()->user() && auth()->user()->role == 'admin')
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button"
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="adminDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Admin Views
                     </a>
                     <div class="dropdown-menu" aria-labelledby="adminDropdown">
-                        <a href="{{ route('homeadmin') }}" class="dropdown-item">Home Admin 😜</a>
+                        <a href="{{ route('homeadmin') }}" class="dropdown-item">Home Admin</a>
                         <!-- Add more admin-related links if needed -->
                     </div>
                 </li>
             @endif
             @if (auth()->user() && auth()->user()->role == 'owner')
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button"
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="adminDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Owner Views
                     </a>
                     <div class="dropdown-menu" aria-labelledby="adminDropdown">
-                        <a href="{{ route('owner.dashboard') }}" class="dropdown-item">Home Owner 😜</a>
+                        <a href="{{ route('owner.dashboard') }}" class="dropdown-item">Home Owner</a>
                         <!-- Add more admin-related links if needed -->
                     </div>
                 </li>

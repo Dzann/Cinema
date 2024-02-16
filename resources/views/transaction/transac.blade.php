@@ -15,9 +15,9 @@
                         {{ $errors->first() }}
                     </div>
                 @endif
+                <div class="card" style="width: 400px">
                     <h3 class="my-4">Terimakasih Sudah Memesan</h3>
-                    <div class="card" style="width: 400px">
-                        <div class="row py-1" style="max-width: 400px; margin-left: 50px">
+                    <div class="row py-1" style="max-width: 400px; margin-left: 50px">
                             <div class="col-6">Film</div>
                             <div class="col text-start">{{ $movie_id }}</div>
                         </div>

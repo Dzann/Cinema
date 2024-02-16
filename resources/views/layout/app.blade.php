@@ -9,8 +9,9 @@
     <link href={{ asset('css/style.css') }} rel="stylesheet">
     <style>
         body{
-            background-color: #dcdcdc;
+            background-color: #ebedf3;
         }
+        
     </style>
 </head>
 <body>
