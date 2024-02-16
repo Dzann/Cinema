@@ -11,11 +11,7 @@ use App\Models\User;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Carbon\Carbon;
-use Dompdf\Dompdf;
-use Dompdf\Options;
-use Illuminate\Support\Facades\DB;
-use ZipArchive;
+use illuminate\Support\Str;
 
 class TransactionHistoryController extends Controller
 {
@@ -133,7 +129,7 @@ class TransactionHistoryController extends Controller
         }
         if (!empty($tickets)) {
             $pdf = PDF::loadView('template.ticket', compact('tickets', 'purchase'));
-            return $pdf->download('Ticket.pdf'); 
+            return $pdf->download($purchase->movie->name.'.pdf'); 
             // # code...
         } else {
             return response()->json(['message' => 'Ticket tidak tersedia']);

@@ -27,7 +27,7 @@
                         <button type="submit" href="" class="btn btn-info w-100 mt-3">Cari Data</button>
                         {{-- <b class="mt-4">Total Pendapatan : Rp.{{ number_format($total, '0', ',', '.') }}</b> --}}
                 </form>
-                @if (auth()->user())
+                @if (auth()->user()->role == 'owner')
                     <form action="{{ route('filterPdf') }}" method="get" class="form-group mt-4">
                         @csrf
                         <h5 class="text-center">Filter Download</h3>
@@ -74,6 +74,7 @@
                 @endforeach
             </tbody>
         </table>
+
     </div>
 
     <script src="{{ $chart->cdn() }}"></script>

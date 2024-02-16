@@ -20,7 +20,7 @@
     }
 
     .invoice-card {
-        border: 1px solid #ccc;
+        border: 1px solid black;
         border-radius: 10px;
         /* Sudut bulat */
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
