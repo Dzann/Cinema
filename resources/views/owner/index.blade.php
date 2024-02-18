@@ -10,7 +10,7 @@
     @include('layout.navigationbar')
 
     <div class="container mt-2 mb-4">
-        <h1>Histories</h1>
+        <h1>Log Activity</h1>
 
         <form action="{{ route('filter') }}" method="get" class="form-group mt-4">
             @csrf

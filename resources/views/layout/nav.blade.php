@@ -32,7 +32,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             {{-- <a href="{{ route('logout') }}" class="dropdown-item">Logout</a> --}}
                             <a href="{{ route('homeadmin') }}" class="dropdown-item">
-                                Home Admin 😜
+                                Home Admin
                             </a>
                         </div>
                 </li>

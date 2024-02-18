@@ -20,7 +20,7 @@
     </style>
     <main class="content py-4">
         <div class="container">
-            <h1 class="my-5 text-light text-center">OriCinema🔥</h3>
+            <h1 class="my-5 text-light text-center">AniPlex🔥</h3>
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-4">
                         <div class="card">

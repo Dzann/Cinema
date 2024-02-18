@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg " style="background-color: #003b6d">
     <div class="container">
         <!-- Brand Logo -->
-        <a class="navbar-brand text-light" href="{{ route('movie') }}">OriCinema🔥</a>
+        <a class="navbar-brand text-light" href="{{ route('movie') }}">AniPlex🔥</a>
 
         <!-- Left Side Navigation Links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">

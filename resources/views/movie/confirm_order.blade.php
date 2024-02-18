@@ -52,7 +52,7 @@
                     <hr style="max-width: 400px" />
                     <div class="row py-1" style="max-width: 400px">
                         <div class="col-6 text-start"><b>Total Bayar</b></div>
-                        <div class="col text-start text-danger"><b>{{ $total }}</b></div>
+                        <div class="col text-start text-danger"><b>Rp. {{ number_format($total, 0, ',', '.') }}</b></div>
                     </div>
                     <hr style="max-width: 400px" />
                     <div class="row py-1 d-flex align-items-center" style="max-width: 400px">
