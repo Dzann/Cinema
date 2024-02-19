@@ -31,14 +31,14 @@ class AuthController extends Controller
                 'user_id' => $user->id,
             ]);
             if($user->role == 'admin'){
-                return redirect()->route('homeadmin');
+                return redirect()->route('homeadmin')->with('message', 'Login Successfully');
             } elseif($user->role == 'owner'){
-                return redirect()->route('owner.dashboard');
+                return redirect()->route('owner.dashboard')->with('message', 'Login Successfully');
             } else {
-                return redirect()->route('movie');
+                return redirect()->route('movie')->with('message', 'Login Successfully');
             }
         } else {
-            return back()->with('error', 'username or password incorrect');
+            return back()->with('message', 'username or password incorrect');
         }
 
     }
@@ -55,7 +55,7 @@ class AuthController extends Controller
                 'user_id' => $user->id,
             ]);
 
-            return view('auth.login');
+            return redirect()->route('formlogin')->with('message', 'Logout Successfully');
         }
 
         return redirect()->back()->with('message', 'User tidak ada');

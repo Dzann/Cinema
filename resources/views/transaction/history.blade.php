@@ -11,7 +11,13 @@
     @include('layout.navigationbar')
 
     <div class="container mt-3 mb-5">
+        @if (session('message'))
+        <div class="alert alert-dark">
+            {{ session('message') }}
+        </div>
+        @endif
         <h1 class="my-2">Histories</h1>
+        
         <div class="row">
             <div class="col-8">
                 {!! $chart->container() !!}

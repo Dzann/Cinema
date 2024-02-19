@@ -45,7 +45,7 @@ class AdminController extends Controller
             'deskripsi' => $request->deskripsi,
             'status' => $request->status,
         ]);
-        return redirect()->route('homeadmin')->with('notif','Berhasil Tambah Movie');
+        return redirect()->route('homeadmin')->with('message','Successfully add Movie');
 
     }
 
@@ -74,12 +74,12 @@ class AdminController extends Controller
         }
         $movie->update($data);
         
-        return redirect()->route('homeadmin')->with('notif','Movie Berhasil di edit');
+        return redirect()->route('homeadmin')->with('message','Movie Edited');
     }
 
     function hapus(movie $movie) {
         $movie->delete();
-        return redirect()->route('homeadmin')->with('notif', 'Berhasil Edit Movie');
+        return redirect()->route('homeadmin')->with('message', 'Sucessfully deleted');
     }
     public function deleteterpilih(Request $request)
     {

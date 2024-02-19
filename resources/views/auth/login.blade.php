@@ -3,48 +3,47 @@
 @section('title', 'login')
 
 @section('body')
+@include('layout.navigationbar')
     <style>
-        button:hover {
-            transform: scale(1.05);
-        }
-
-        .form-control:hover {
-            transform: scale(1.05);
-
-        }
-
-        body{
-            background-image: url('img/bg.jpg');
-            background-size: cover;
+        .box {
+            margin-top: 100px;
+            box-shadow: 0 4px 8px black;
+            border-radius: 8px;
         }
     </style>
-    <main class="content py-4">
-        <div class="container">
-            <h1 class="my-5 text-light text-center">AniPlex🔥</h3>
-                <div class="row d-flex justify-content-center">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="text-center mb-3">Login</h5>
-                                <form action="{{ route('login') }}" method="POST">
-                                    @csrf
-                                    <div class="form-group mb-3">
-                                        <label for="username" class="mb-2">Username</label>
-                                        <input type="text" name="username" class="form-control" autofocus>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label for="username" class="mb-2">Password</label>
-                                        <input type="password" name="password" class="form-control">
-                                    </div>
-                                    @if (Session::has('message'))
-                                        <h5 class="mt-2">{{ Session::get('message') }}</h5>
-                                    @endif
-                                    <button class="btn btn-info w-100">Login</button>
-                                </form>
+    <div class="container mt-5 col-8">
+        <form action="{{ route('login') }}" method="POST" class="form-gorup">
+            @csrf
+            <div class="card shadow">
+                <div class="row">
+                    <div class="col-md-6 p-5" style="background-color: #BFE4F6;">
+                        <img src="{{ asset('img/logo.png') }}" class="card-img" alt="" style="width: 100%;">
+                    </div>
+                    <div class="col-md-6">
+                        <h1 style="text-align: center" class="mt-4"> AniPlex Cinema </h1>
+                        <hr>
+                        <div class="card-body p-4 border-2 text-black rounded-4">
+                            <h3> Login </h3>
+                            @if (session('message'))
+                                <div class="alert alert-dark">
+                                    {{ session('message') }}
+                                </div>
+                            @endif
+                            <div class="mb-3">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" id="username" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="mt-3">
+                                <button class="btn btn-info text-light w-100"> Login </button>
                             </div>
                         </div>
                     </div>
                 </div>
-        </div>
-    </main>
+            </div>
+        </form>
+    </div>
 @endsection

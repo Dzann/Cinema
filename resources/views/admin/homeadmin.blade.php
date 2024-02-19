@@ -33,6 +33,11 @@
 
     <div class="container mt-4" style="align-items: center">
         <h2 class="text-center">Home Admin</h2>
+        @if (session('message'))
+            <div class="alert alert-dark">
+                {{ session('message') }}
+            </div>
+        @endif
         <a href="{{ route('tambahmovie') }}" class="btn bg-info mt-2" style="margin-left: 20px">Tambah Movie</a>
     </div>
     <div class="container mt-3 mb-5">

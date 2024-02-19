@@ -111,7 +111,7 @@ class TransactionHistoryController extends Controller
                 ]
             ]);
 
-        return view('transaction.history', ['histories' => $histories, 'chart' => $chart, 'total' => $totalProfit]);
+        return view('transaction.history', ['histories' => $histories, 'chart' => $chart, 'total' => $totalProfit])->with('message', 'Filter Successfully');
     }
     
     public function ticket(Request $request)
@@ -132,7 +132,7 @@ class TransactionHistoryController extends Controller
             return $pdf->download($purchase->movie->name.'.pdf'); 
             // # code...
         } else {
-            return response()->json(['message' => 'Ticket tidak tersedia']);
+            return back()->with('message', 'Ticket tidak tersedia');
         }
     }
 

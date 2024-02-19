@@ -10,6 +10,11 @@
     @include('layout.navigationbar')
     <main class="content py-4">
         <div class="container">
+            @if (session('message'))
+            <div class="alert alert-dark">
+                {{ session('message') }}
+            </div>
+            @endif
             <h3 class="text-center my-4">List Movie</h3>
             <div class="row">
                 <h5>On Going Movie</h5>
@@ -21,7 +26,7 @@
                                     @if (!auth()->user())
                                         <div class="card shadow">
                                             <a href="{{ route('login') }}"
-                                                style="text-decoration: none; color:rgb(202, 115, 10)" class="gagambar">
+                                                style="text-decoration: none; color: black" class="gagambar">
                                                 <img src="{{ $cinema->image }}" class="card-img-top" alt=""
                                                     style="height: 500px; object-fit: cover; ">
                                                 <h3 class="mt-2">{{ $cinema->name }}</h3>
