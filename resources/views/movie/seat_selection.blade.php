@@ -70,7 +70,7 @@
         </form>
     </div>
 </main>
-
+@include('layout.footer')
 <script>
     function getCheckedBoxes(chkboxName) {
         var checkboxes = document.getElementsByName(chkboxName);

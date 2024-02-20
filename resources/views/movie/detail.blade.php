@@ -27,6 +27,10 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
+        <footer class="page-footer font-small blue fixed-bottom" style="">
+            <div class="footer-copyright text-center py-3">© 2024 Copyright:
+                <a href="mailto:muhammadgidzane@gmail.com"> muhammadgidzane@gmail.com</a>
+            </div>
+        </footer>
+        
 @endsection

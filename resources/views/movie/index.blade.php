@@ -79,4 +79,5 @@
             @endif
         </div>
     </main>
+    @include('layout.footer')
 @endsection

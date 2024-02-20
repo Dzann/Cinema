@@ -82,7 +82,7 @@
         </table>
 
     </div>
-
+    @include('layout.footer')
     <script src="{{ $chart->cdn() }}"></script>
 
     <script src="{{ asset('js/jquery-3.7.0.js') }}"></script>
