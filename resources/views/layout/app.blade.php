@@ -7,6 +7,7 @@
     <title>@yield('title') - AniPlex Cinema</title>
     <link href={{ asset('css/bootstrap.css') }} rel="stylesheet">
     <link href={{ asset('css/style.css') }} rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/icon.png') }}">
     <style>
         body{
             background-color: #ebedf3;
