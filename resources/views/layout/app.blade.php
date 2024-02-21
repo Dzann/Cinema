@@ -15,7 +15,7 @@
         }
 
         footer {
-            background-color: #6699cc
+            background-color: #a6d2ff
         }
 
     </style>

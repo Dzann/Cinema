@@ -4,20 +4,23 @@
 
 @section('body')
     @extends('layout.navigationbar')
-    <main class="container py-4">
 
-        <center>
-            <main class="content py-4">
-                <div class="container">
-
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        {{ $errors->first() }}
-                    </div>
-                @endif
-                <div class="card" style="width: 400px">
-                    <h3 class="my-4">Terimakasih Sudah Memesan</h3>
-                    <div class="row py-1" style="max-width: 400px; margin-left: 50px">
+    <div class="container mt-5 col-8">
+        <div class="card shadow">
+            <div class="row">
+                <div class="col-md-6 p-5" style="background-color: #BFE4F6;">
+                    <img src="{{ asset('img/logo.png') }}" class="card-img" alt="" style="width: 100%;">
+                </div>
+                <div class="col-md-6">
+                    <h2 style="text-align: center" class="mt-4">Terima Kasih Sudah Memesan </h2>
+                    <hr>
+                    <div class="card-body p-4 border-2 text-black rounded-4">
+                        @if (session('message'))
+                            <div class="alert alert-dark">
+                                {{ session('message') }}
+                            </div>
+                        @endif
+                        <div class="row py-1" style="max-width: 400px; margin-left: 50px">
                             <div class="col-6">Film</div>
                             <div class="col text-start">{{ $movie_id }}</div>
                         </div>
@@ -33,19 +36,24 @@
                             <div class="col-6">Tempat Duduk</div>
                             <div class="col text-start">{{ $seats }}</div>
                         </div>
-                        <hr style="max-width: 400px" />
-                        <div class="row py-1" style="max-width: 400px">
-                            <div class="col-6 text-start " style="margin-left: 50px"><b>Kembalian</b></div>
-                            <div class="col text-start text-danger"><b>{{ $kembalian }}</b></div>
+                        <hr class="w-100 mt-5">
+                        <div class="row py-1" style="w-100">
+                            <div class="col-6 text-center"><b>Kembalian</b></div>
+                            <div class="col text-center text-danger"><b>Rp. {{ number_format($kembalian, 0, ',', '.') }}</b>
+                            </div>
                         </div>
-                        <hr style="max-width: 400px" />
-                        <a href="{{ route('movie') }}" class="btn btn-info">Kembali Ke Menu</a>
-                        <a href="{{ route('ticket', ['id_movie'=> $movie_id, 'seats' => $seats, 'time' => $time]) }}" class="btn btn-secondary mt-1">Print Ticket</a>
+                        <hr style="w-100 "/>
+                        <div class="d-flex gap-1">
+                            <a href="{{ route('movie') }}" class="btn btn-info w-100">Kembali Ke Menu</a>
+                            <a href="{{ route('ticket', ['id_movie' => $movie_id, 'seats' => $seats, 'time' => $time]) }}"
+                                class="btn btn-secondary w-100">Print Ticket</a>
+                        </div>
                     </div>
                 </div>
-            </main>
-        </center>
-    </main>
+            </div>
+        </div>
+    </div>
+
     <footer class="page-footer font-small blue fixed-bottom" style="">
         <div class="footer-copyright text-center py-3">© 2024 Copyright:
             <a href="mailto:muhammadgidzane@gmail.com"> muhammadgidzane@gmail.com</a>

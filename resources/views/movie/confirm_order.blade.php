@@ -6,9 +6,9 @@
 
     @include('layout.navigationbar')
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            {{ $errors->first() }}
+    @if (session('message'))
+        <div class="alert alert-dark">
+            {{ session('message') }}
         </div>
     @endif
     <main class="content py-4">
@@ -75,6 +75,7 @@
         let uangBayar = document.getElementById('uangBayar');
         let createOrder = document.getElementById('createOrder');
         let totalBayar = {{ $total }}
+
         function cekBayar() {
 
             let uangBayarValue = parseFloat(uangBayar.value);
@@ -87,5 +88,5 @@
             }
         }
     </script>
-    
+
 @endsection

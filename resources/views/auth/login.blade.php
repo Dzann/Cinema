@@ -4,13 +4,6 @@
 
 @section('body')
 @include('layout.navigationbar')
-    <style>
-        .box {
-            margin-top: 100px;
-            box-shadow: 0 4px 8px black;
-            border-radius: 8px;
-        }
-    </style>
     <div class="container mt-5 col-8">
         <form action="{{ route('login') }}" method="POST" class="form-gorup">
             @csrf
