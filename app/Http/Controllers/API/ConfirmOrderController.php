@@ -96,9 +96,7 @@ class ConfirmOrderController extends Controller
                     'seats' => $seats,
                     'kembalian' => $change,
                     'id' => $purchase->id,
-                    'message' => 'pesanan berhasil dibuat!',
-    
-                ]);
+                ])->with('message','pesanan berhasil dibuat!');
                 // return redirect()->route('transaction', [
                 //     'id' => $purchase->id,
                 //     'time' => $time, // Tambahkan variabel $time ke dalam array parameter

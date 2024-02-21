@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-md-6">
                     <h2 style="text-align: center" class="mt-4">Terima Kasih Sudah Memesan </h2>
-                    <hr>
+                    <hr style="w-100">
                     <div class="card-body p-4 border-2 text-black rounded-4">
                         @if (session('message'))
                             <div class="alert alert-dark">
