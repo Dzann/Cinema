@@ -77,7 +77,7 @@ class ConfirmOrderController extends Controller
                 }
     
                 Log::create([
-                    'activity' => 'melakukan transaksi',
+                    'activity' => auth()->user()->username.' melakukan transaksi ',
                     'user_id' => auth()->user()->id,
                 ]);
     
@@ -86,6 +86,7 @@ class ConfirmOrderController extends Controller
     
                 $this->saveHistory($movie_id, date('Y-m-d'), $time, $total, $seats, $usercreate, $change, $cash);
     
+                
                 return view('transaction.transac', [
                     'movie_name' => $movie_name,
                     'movie_id' => $movie_id,

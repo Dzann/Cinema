@@ -38,7 +38,7 @@
                 @foreach ($logs as $log)
                     <tr>
                         <td>{{ $log->user->username }}</td>
-                        <td>{{ $log->user->username }} {{ $log->activity }}</td>
+                        <td>{{ $log->activity }}</td>
                         <td>{{ \Carbon\Carbon::parse($log->created_at)->format('Y-m-d H-i-s') }}</td>
                     </tr>
                 @endforeach

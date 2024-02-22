@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\History;
+use App\Models\Log;
 use App\Models\Movie;
 use App\Models\Purchase;
 use App\Models\PurchaseTicket;
@@ -11,6 +12,7 @@ use App\Models\User;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
 use illuminate\Support\Str;
 
 class TransactionHistoryController extends Controller
@@ -49,6 +51,7 @@ class TransactionHistoryController extends Controller
                 ]
             ]);
 
+
         // return view('transaction.history', compact('chart'));
         return view('transaction.history', ['histories' => $histories, 'chart' => $chart, 'total' => $totalProfit]);
     }
@@ -62,13 +65,19 @@ class TransactionHistoryController extends Controller
         $end = \Carbon\Carbon::parse($end)->endOfDay();
 
         $histories = History::with('movie')->get();
-        
+
         $histories = History::whereBetween('created_at', [$start, $end])->get();
         $profit = $histories->pluck('total')->toArray();
 
         $totalProfit = array_sum($profit);
 
         $pdf = PDF::loadView('template.histories', compact('histories', 'totalProfit'));
+        $user = Auth::user();
+
+        Log::create([
+            'activity' => $user->username . ' Mendownload Data Penjualan ',
+            'user_id' => $user->id,
+        ]);
         return $pdf->download('History Transaksi.pdf');
     }
 
@@ -82,7 +91,7 @@ class TransactionHistoryController extends Controller
 
         $histories = History::with('movie')->get();
 
-        
+
         $histories = History::whereBetween('created_at', [$start, $end])->get();
         $groupedHistories = $histories->groupBy(function ($history) {
             return \Carbon\Carbon::parse($history->created_at)->format('d-m-Y');
@@ -113,7 +122,7 @@ class TransactionHistoryController extends Controller
 
         return view('transaction.history', ['histories' => $histories, 'chart' => $chart, 'total' => $totalProfit])->with('message', 'Filter Successfully');
     }
-    
+
     public function ticket(Request $request)
     {
         $seats = explode(',', $request->seats);
@@ -129,11 +138,16 @@ class TransactionHistoryController extends Controller
         }
         if (!empty($tickets)) {
             $pdf = PDF::loadView('template.ticket', compact('tickets', 'purchase'));
-            return $pdf->download($purchase->movie->name.'.pdf'); 
+            $user = Auth::user();
+
+            Log::create([
+                'activity' => $user->username . ' Mendownload Ticket ',
+                'user_id' => $user->id,
+            ]);
+            return $pdf->download($purchase->movie->name . '.pdf');
             // # code...
         } else {
             return back()->with('message', 'Ticket tidak tersedia');
         }
     }
-
 }

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Genre;
+use App\Models\Log;
 use App\Models\Movie;
 use App\Models\PurchaseTicket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -45,6 +47,13 @@ class AdminController extends Controller
             'deskripsi' => $request->deskripsi,
             'status' => $request->status,
         ]);
+
+        $user = Auth::user();
+
+        Log::create([
+            'activity' => $user->username.' Menambah Film ',
+            'user_id' => $user->id,
+        ]);
         return redirect()->route('homeadmin')->with('message','Successfully add Movie');
 
     }
@@ -69,16 +78,28 @@ class AdminController extends Controller
         ]);
         if ($request->hasFile('image')) {
             $data['image'] = $request->image->store('img');
+            $user = Auth::user();
+            Log::create([
+                'activity' => $user->username.' Mengedit Film '.$movie->name,
+                'user_id' => $user->id,
+            ]);
         } else {
             unset($data['image']);
         }
         $movie->update($data);
         
+
         return redirect()->route('homeadmin')->with('message','Movie Edited');
     }
 
     function hapus(movie $movie) {
         $movie->delete();
+        $user = Auth::user();
+
+        Log::create([
+            'activity' => $user->username.' Menghapus Film '.$movie->name,
+            'user_id' => $user->id,
+        ]);
         return redirect()->route('homeadmin')->with('message', 'Sucessfully deleted');
     }
     public function deleteterpilih(Request $request)
