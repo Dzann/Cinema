@@ -97,19 +97,6 @@ class ConfirmOrderController extends Controller
                     'kembalian' => $change,
                     'id' => $purchase->id,
                 ])->with('message','pesanan berhasil dibuat!');
-                // return redirect()->route('transaction', [
-                //     'id' => $purchase->id,
-                //     'time' => $time, // Tambahkan variabel $time ke dalam array parameter
-                //     'message' => 'Pesanan berhasil dibuat',
-                //     'movie_name' => $movie_name,
-                //     'movie_id' => $movie_id,
-                //     'date' => date('Y-m-d'),
-                //     'total' => $total,
-                //     'cash' => $cash,
-                //     'seats' => $seats,
-                //     'kembalian' => $change,
-                // ]);
-                
             }
         } else {
             return redirect()->back()->with([

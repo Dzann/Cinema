@@ -6,11 +6,6 @@
 
     @include('layout.navigationbar')
 
-    @if (session('message'))
-        <div class="alert alert-dark">
-            {{ session('message') }}
-        </div>
-    @endif
     <main class="content py-4">
         <div class="container">
             <div class="card rounded col-4 mx-auto shadow p-4 mt-5 mb-5">
@@ -55,14 +50,15 @@
                         <div class="col text-start text-danger"><b>Rp. {{ number_format($total, 0, ',', '.') }}</b></div>
                     </div>
                     <hr style="max-width: 400px" />
-                    <div class="row py-1 d-flex align-items-center" style="max-width: 400px">
+                    <div class="row py-1 d-flex align-items-center mb-4" style="max-width: 400px">
                         <div class="col-6 text-start"><b>Jumlah Uang</b></div>
                         <div class="col text-start">
                             <input id="uangBayar" type="number" name="cash" class="form-control" autofocus />
                         </div>
                     </div>
                 </form>
-                <button type="submit" class="btn btn-info mt-4" onclick="cekBayar()">Bayar</button>
+                <div id="alertContainer"></div>
+                <button type="submit" class="btn btn-info" onclick="cekBayar()">Bayar</button>
             </div>
         </div>
     </main>
@@ -76,6 +72,13 @@
         let createOrder = document.getElementById('createOrder');
         let totalBayar = {{ $total }}
 
+        document.getElementById("uangBayar").addEventListener("keydown", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                cekBayar();
+            }
+        });
+
         function cekBayar() {
 
             let uangBayarValue = parseFloat(uangBayar.value);
@@ -83,7 +86,8 @@
             if (uangBayarValue >= totalBayar) {
                 createOrder.submit();
             } else {
-                alert('Uang anda kurang');
+                document.getElementById('alertContainer').innerHTML =
+                '<div class="alert alert-dark">Uang Anda Kurang</div>';
                 return false;
             }
         }
