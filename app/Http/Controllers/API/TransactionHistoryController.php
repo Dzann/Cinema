@@ -51,8 +51,6 @@ class TransactionHistoryController extends Controller
                 ]
             ]);
 
-
-        // return view('transaction.history', compact('chart'));
         return view('transaction.history', ['histories' => $histories, 'chart' => $chart, 'total' => $totalProfit]);
     }
 
