@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+{{-- <html lang="en"> --}}
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Tickets</title>
+    {{-- <meta charset="UTF-8"> --}}
+    {{-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> --}}
+    <title>History Tickets</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,10 +18,14 @@
             text-align: center;
             margin-bottom: 20px;
         }
+        hr{
+            margin-bottom: 20px;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
+            margin-top: 20px;
         }
         th, td {
             border: 1px solid black;
@@ -29,20 +33,20 @@
             text-align: left;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: hsl(192, 100%, 65%);
         }
         .total {
-            /* text-align: right; */
             position: absolute;
             margin-top: 20px;
             right: 10px;
+            text-align: right;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Movie Tickets</h1>
-        <br>
+        <hr>
         <table>
             <thead>
                 <tr>
@@ -65,7 +69,7 @@
                 @endforeach
             </tbody>
         </table>
-        <b>Total Pendapatan : Rp. {{ number_format($totalProfit, '0', ',', '.') }}</b>
+        <b class="total">Total Pendapatan : Rp. {{ number_format($totalProfit, '0', ',', '.') }}</b>
     </div>
 </body>
 </html>

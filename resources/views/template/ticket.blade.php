@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Invoice</title>
+    <title>Ticket</title>
 </head>
 <style>
-    body {
+   body {
         font-family: 'Arial', sans-serif;
         display: flex;
         align-items: center;
@@ -27,11 +27,17 @@
         width: 400px;
         padding: 20px;
         margin-bottom: 20px;
+        /* background: linear-gradient(135deg, #8e44ad, #3498db);
+        color: white; */
         
     }
 
     .invoice-header {
         text-align: center;
+        margin-top: -20px;
+    }
+
+    hr {
         margin-bottom: 20px;
     }
 
@@ -48,6 +54,7 @@
         /* Menjadikan strong sebagai elemen inline-block */
     }
 
+
 </style>
 
 <body>
@@ -58,6 +65,7 @@
             <div class="invoice-header">
                 <h2>{{ $purchase->movie->name }}</h2>
             </div>
+            <hr>
             <div class="invoice-details">        
                 <p><strong>Tanggal</strong>: {{ $ticket->created_at}}</p>
                 <p><strong>Film</strong>: {{ $purchase->movie->name }}</p>
@@ -65,7 +73,6 @@
                 <p><strong>Seats</strong>: {{ $ticket->seat }} </p>
             </div>
         </div>
-            
         @endforeach
     </div>
     
