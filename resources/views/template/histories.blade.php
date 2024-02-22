@@ -32,15 +32,16 @@
             background-color: #f2f2f2;
         }
         .total {
-            text-align: right;
+            /* text-align: right; */
+            position: absolute;
             margin-top: 20px;
+            right: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Movie Tickets</h1>
-        <b>Total Pendapatan : Rp. {{ number_format($totalProfit, '0', ',', '.') }}</b>
         <br>
         <table>
             <thead>
@@ -50,8 +51,6 @@
                     <th>Time</th>
                     <th>Seats</th>
                     <th>Total Price</th>
-                    <th>Cash</th>
-                    <th>Change</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,12 +61,11 @@
                         <td>{{ $ticket->time }}</td>
                         <td>{{ $ticket->seats }}</td>
                         <td>Rp.{{ number_format($ticket->total, '0', ',', '.') }}</td>
-                        <td>Rp.{{ number_format($ticket->cash, '0', ',', '.') }}</td>
-                        <td>Rp.{{number_format($ticket->change, '0', ',', '.') }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        <b>Total Pendapatan : Rp. {{ number_format($totalProfit, '0', ',', '.') }}</b>
     </div>
 </body>
 </html>

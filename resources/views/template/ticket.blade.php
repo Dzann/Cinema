@@ -27,6 +27,7 @@
         width: 400px;
         padding: 20px;
         margin-bottom: 20px;
+        
     }
 
     .invoice-header {
@@ -47,19 +48,6 @@
         /* Menjadikan strong sebagai elemen inline-block */
     }
 
-    .download-pdf a {
-        text-decoration: none;
-        background-color: #007BFF;
-        color: #fff;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    .download-pdf a:hover {
-        background-color: #0056b3;
-    }
 </style>
 
 <body>
@@ -71,10 +59,10 @@
                 <h2>{{ $purchase->movie->name }}</h2>
             </div>
             <div class="invoice-details">        
-                <p><strong>Tanggal:</strong>{{ $ticket->created_at}}</p>
-                <p><strong>Film</strong>{{ $purchase->movie->name }}</p>
-                <p><strong>Waktu</strong>{{ $purchase->time }}</p>
-                <p><strong>Seats :</strong>{{ $ticket->seat }} </p>
+                <p><strong>Tanggal</strong>: {{ $ticket->created_at}}</p>
+                <p><strong>Film</strong>: {{ $purchase->movie->name }}</p>
+                <p><strong>Waktu</strong>: {{ $purchase->time }}</p>
+                <p><strong>Seats</strong>: {{ $ticket->seat }} </p>
             </div>
         </div>
             
