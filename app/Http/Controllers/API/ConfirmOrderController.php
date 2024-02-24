@@ -105,23 +105,6 @@ class ConfirmOrderController extends Controller
             ]);
         }
     }
-
-    // Di dalam controller
-    
-    public function show($id)
-    {
-        $purchase = Purchase::findOrFail($id); // Mengambil data pembelian berdasarkan ID
-        // Tampilkan halaman transaction.transac dengan data pembelian yang diperoleh
-        return view('transaction.transac', [
-            'purchase' => $purchase,
-            'movie_id' => $purchase->movie_id,
-            'movie_name' => $purchase->movie->name,
-            'time' => $purchase->time,
-            'seats' => $purchase->purchaseTicket->seats,
-
-            
-        ]);
-    }
     
     public function saveHistory($movieId, $date, $time, $total, $seats, $userId, $change, $cash)
     {
