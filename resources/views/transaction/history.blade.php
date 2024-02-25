@@ -56,12 +56,12 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Movie Title</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Time</th>
+                    <th scope="col">Waktu</th>
+                    <th scope="col">Jam</th>
                     <th scope="col">Seats</th>
                     <th scope="col">Total</th>
-                    <th scope="col">Cash</th>
-                    <th scope="col">Change</th>
+                    <th scope="col">Uang</th>
+                    <th scope="col">kembalian</th>
                     <!-- Add other history details as needed -->
                 </tr>
             </thead>

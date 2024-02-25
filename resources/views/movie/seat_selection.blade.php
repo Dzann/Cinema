@@ -13,7 +13,7 @@
         </h5>
         <div class="card shadow m-5 p-2">
             <div class="card-body">
-                <h2 class="text-center">Screen</h2>
+                <h2 class="text-center">Layar Utama</h2>
             </div>
         </div>
         <form action="{{ route('confirmOrder', [
@@ -24,7 +24,7 @@
             @php
                 $seatType = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
             @endphp
-            @for ($i = 0; $i < 7; $i++)
+            @for ($i = 0; $i < 7; $i++) 
             <div class="row d-flex justify-content-around mb-4">
                 <div class="col-5 d-flex justify-content-around">
                     @for ($j = 0; $j < 6; $j++)

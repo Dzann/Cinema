@@ -24,7 +24,7 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <!-- User Dropdown -->
             @if (!auth()->user())
-                <a href="{{ route('formlogin') }}" class="btn btn-success">Please Login First</a>
+                <a href="{{ route('formlogin') }}" class="btn btn-success">Login</a>
             @endif
             @if (auth()->user())
                 <li class="nav-item dropdown">

@@ -40,7 +40,7 @@ class TransactionHistoryController extends Controller
         $totalProfit = array_sum($profit);
 
         // dd($histories);
-        $chart = (new LarapexChart)->setType('bar')
+        $chart = (new LarapexChart)->setType('area')
             ->setTitle('History')
             ->setSubtitle('History Transaction')
             ->setXAxis($date)
@@ -107,7 +107,7 @@ class TransactionHistoryController extends Controller
 
         $totalProfit = array_sum($profit);
 
-        $chart = (new LarapexChart)->setType('bar')
+        $chart = (new LarapexChart)->setType('area')
             ->setTitle('History')
             ->setSubtitle('History Transaction')
             ->setXAxis($date)

@@ -5,7 +5,7 @@
 @section('body')
 <nav class="navbar navbar-expand-lg bg-info text-dark">
     <div class="container">
-        <a class="navbar-brand" href="list-movies.html">OriCinema</a>
+        <a class="navbar-brand" href="list-movies.html">Aniplex</a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('movie') }}">

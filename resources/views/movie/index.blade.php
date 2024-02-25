@@ -17,7 +17,7 @@
             @endif
             <h3 class="text-center my-4">List Movie</h3>
             <div class="row">
-                <h5>On Going Movie</h5>
+                <h5>Movie Yang Sedang Tayang</h5>
                 @foreach ($movie as $cinema)
                     @if ($cinema->status == 'ongoing')
                         <div class="col-4">
@@ -53,7 +53,7 @@
             </div>
             @if (auth()->user())
                 <div class="row">
-                    <h5>UpComing Movie</h5>
+                    <h5>Movie Yang Akan Datang</h5>
                     @foreach ($movie as $movie)
                         @if ($movie->status == 'upcoming')
                             <div class="col-4">
