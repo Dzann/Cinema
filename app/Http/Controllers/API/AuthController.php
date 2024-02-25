@@ -27,7 +27,7 @@ class AuthController extends Controller
         if(Auth::attempt($validator)){
             $user = Auth::user();
             Log::create([
-                'activity' => $user->username.' has Login ',
+                'activity' => $user->username.' telah Login ',
                 'user_id' => $user->id,
             ]);
             if($user->role == 'admin'){
@@ -51,7 +51,7 @@ class AuthController extends Controller
             Auth::logout();
 
             Log::create([
-                'activity' => $user->username.' has Logout ',
+                'activity' => $user->username.' telah Logout ',
                 'user_id' => $user->id,
             ]);
 

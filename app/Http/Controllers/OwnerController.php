@@ -27,6 +27,6 @@ class OwnerController extends Controller
 
         $logs = Log::whereBetween('created_at' ,[$start, $end])->get();
         
-        return view('owner.index', compact('logs'))->with('message', 'Filter Successfully');;
+        return view('owner.index', compact('logs'))->with('message', 'berhasil Memfilter');;
     }
 }

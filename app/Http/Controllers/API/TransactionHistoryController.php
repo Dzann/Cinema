@@ -41,8 +41,8 @@ class TransactionHistoryController extends Controller
 
         // dd($histories);
         $chart = (new LarapexChart)->setType('area')
-            ->setTitle('History')
-            ->setSubtitle('History Transaction')
+            ->setTitle('Riwayat')
+            ->setSubtitle('Riwayat Transaksi')
             ->setXAxis($date)
             ->setDataset([
                 [
@@ -118,7 +118,7 @@ class TransactionHistoryController extends Controller
                 ]
             ]);
 
-        return view('transaction.history', ['histories' => $histories, 'chart' => $chart, 'total' => $totalProfit])->with('message', 'Filter Successfully');
+        return view('transaction.history', ['histories' => $histories, 'chart' => $chart, 'total' => $totalProfit])->with('message', 'Filter Data Berhasul');
     }
 
     public function ticket(Request $request)

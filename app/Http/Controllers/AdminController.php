@@ -47,7 +47,7 @@ class AdminController extends Controller
             'deskripsi' => $request->deskripsi,
             'status' => $request->status,
         ]);
-        return redirect()->route('homeadmin')->with('message','Successfully add Movie');
+        return redirect()->route('homeadmin')->with('message','berhasil menambah Movie');
 
     }
 
@@ -77,29 +77,16 @@ class AdminController extends Controller
         $movie->update($data);
         
 
-        return redirect()->route('homeadmin')->with('message','Movie Edited');
+        return redirect()->route('homeadmin')->with('message','Movie Berhasil di edit');
     }
 
     function hapus(movie $movie) {
         $movie->delete();
         $user = Auth::user();
 
-        return redirect()->route('homeadmin')->with('message', 'Sucessfully deleted');
+        return redirect()->route('homeadmin')->with('message', 'Berhasil Hapus');
     }
-    public function deleteterpilih(Request $request)
-    {
-        $selectedItems = $request->input('selected_items', []);
-
-        // Ensure at least one item is selected
-        if (empty($selectedItems)) {
-            return redirect()->back()->with('error', 'Please select at least one movie to delete.');
-        }
-
-        // Delete selected movies
-        Movie::whereIn('id', $selectedItems)->delete();
-
-        return redirect()->back()->with('success', 'Selected movies have been deleted successfully.');
-    }
+    
     public function tambahuser(Request $request)  {
         $request->validate([
             "username" => "required",
@@ -111,7 +98,7 @@ class AdminController extends Controller
             "password" => $request->password,
             "role" => $request->role,
         ]);
-        return redirect()->route('homeadmin')->with('notif','Berhasil Tambah User');
+        return redirect()->route('homeadmin')->with('message','Berhasil Tambah User');
 
     }
 }
