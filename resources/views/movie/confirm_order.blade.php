@@ -58,7 +58,7 @@
                     </div>
                 </form>
                 <div id="alertContainer"></div>
-                <button type="submit" class="btn btn-info" onclick="cekBayar()">Bayar</button>
+                <button type="submit" class="btn btn-info text-light" onclick="cekBayar()">Bayar</button>
             </div>
         </div>
     </main>

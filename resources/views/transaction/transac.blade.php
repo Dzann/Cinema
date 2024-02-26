@@ -44,7 +44,7 @@
                         </div>
                         <hr style="w-100 "/>
                         <div class="d-flex gap-1">
-                            <a href="{{ route('movie') }}" class="btn btn-info w-100">Kembali Ke Menu</a>
+                            <a href="{{ route('movie') }}" class="btn btn-info w-100 text-light">Kembali Ke Menu</a>
                             <a href="{{ route('ticket', ['id_movie' => $movie_id, 'seats' => $seats, 'time' => $time]) }}"
                                 class="btn btn-secondary w-100">Print Tiket</a>
                         </div>

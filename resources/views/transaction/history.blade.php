@@ -32,7 +32,7 @@
                                         <input type="date" name="start_date" id="" class="form-control">
                                         <label for="" class="mt-2">Tanggal Akhir</label>
                                         <input type="date" name="end_date" id="" class="form-control">
-                                        <button type="submit" href="" class="btn btn-info w-100 mt-4">Cari Data</button>
+                                        <button type="submit" href="" class="btn btn-info w-100 mt-4 text-light">Cari Data</button>
                                         {{-- <b class="mt-4">Total Pendapatan : Rp.{{ number_format($total, '0', ',', '.') }}</b> --}}
                                 </form>
                             </div>

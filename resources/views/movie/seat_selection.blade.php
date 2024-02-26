@@ -63,7 +63,7 @@
             {{-- <input type="hidden" name="token" value="{{ csrf_token() }}"> --}}
             <input type="hidden" name ="seats" id="seats_selected">
             <div class="text-center my-5">  
-                <button type="submit" class="btn btn-info" value="button">
+                <button type="submit" class="btn btn-info text-light" value="button">
                     Selesai memilih
                 </button>
             </div>

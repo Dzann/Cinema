@@ -64,7 +64,7 @@
         @foreach ($tickets as $ticket)
         <div class="invoice-card">
             <div class="invoice-header">
-                <h2>{{ $purchase->movie->name }}</h2>
+                <h2>AniPlex Cinema</h2>
             </div>
             <hr>
             <div class="invoice-details">        
