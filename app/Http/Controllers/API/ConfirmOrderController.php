@@ -11,6 +11,7 @@ use App\Models\PurchaseTicket;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class ConfirmOrderController extends Controller
 {
@@ -70,16 +71,18 @@ class ConfirmOrderController extends Controller
                 $orders = explode(',', $request->seats);
     
                 foreach ($orders as $order) {
+                    $code = Str::random(6);
                     PurchaseTicket::create([
                         'purchase_id' => $purchase->id,
                         'seat' => $order,
+                        'code' => 'INV'. $code,
                     ]);
                 }
     
-                Log::create([
-                    'activity' => auth()->user()->username.' melakukan transaksi ',
-                    'user_id' => auth()->user()->id,
-                ]);
+                // Log::create([
+                //     'activity' => auth()->user()->username.' melakukan transaksi ',
+                //     'user_id' => auth()->user()->id,
+                // ]);
     
                 $change = $cash - $total;
 

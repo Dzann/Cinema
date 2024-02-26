@@ -17,6 +17,7 @@ class CreatePurchaseTicketsTable extends Migration
             $table->id();
             $table->foreignId('purchase_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('seat');
+            $table->string('code');
             $table->timestamps();
         });
     }

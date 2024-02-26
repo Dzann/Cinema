@@ -118,6 +118,7 @@ class DatabaseSeeder extends Seeder
         PurchaseTicket::create([
             'purchase_id' => 1,
             'seat' => 'E05',
+            'code' => 'D6uY3D',
         ]);
     }
 }

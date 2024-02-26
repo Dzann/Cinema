@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Ticket</title>
 </head>
 <style>
@@ -71,6 +72,7 @@
                 <p><strong>Film</strong>: {{ $purchase->movie->name }}</p>
                 <p><strong>Waktu</strong>: {{ $purchase->time }}</p>
                 <p><strong>Seats</strong>: {{ $ticket->seat }} </p>
+                <p><strong>Invoice</strong>: {{ $ticket->code }} </p>
             </div>
         </div>
         @endforeach
