@@ -31,14 +31,14 @@ class AuthController extends Controller
                 'user_id' => $user->id,
             ]);
             if($user->role == 'admin'){
-                return redirect()->route('homeadmin')->with('message', 'Login Successfully');
+                return redirect()->route('homeadmin')->with('message', 'Login Berhasil');
             } elseif($user->role == 'owner'){
-                return redirect()->route('owner.dashboard')->with('message', 'Login Successfully');
+                return redirect()->route('owner.dashboard')->with('message', 'Login Berhasil');
             } else {
-                return redirect()->route('movie')->with('message', 'Login Successfully');
+                return redirect()->route('movie')->with('message', 'Login Berhasil');
             }
         } else {
-            return back()->with('message', 'username or password incorrect');
+            return back()->with('message', 'username atau password salah');
         }
 
     }
@@ -55,7 +55,7 @@ class AuthController extends Controller
                 'user_id' => $user->id,
             ]);
 
-            return redirect()->route('formlogin')->with('message', 'Logout Successfully');
+            return redirect()->route('formlogin')->with('message', 'Logout Berhasil');
         }
 
         return redirect()->back()->with('message', 'User tidak ada');
@@ -79,7 +79,7 @@ class AuthController extends Controller
                     'password' => Hash::make($new_password)
                 ]);
 
-                return redirect()->route('movie');
+                return redirect()->route('movie')->with('message', 'Password berhasil di ubah');
             } else {
                 return redirect()->back()->with('message', 'password harus sama');
             }
