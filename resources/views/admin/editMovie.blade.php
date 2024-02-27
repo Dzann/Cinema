@@ -3,7 +3,9 @@
 @section('title', 'edit')
 
 @section('body')
-
+<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap5.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/responsive.bootstrap5.min.css') }}">
     @include('layout.navigationbar')
 
     <div class="container mt-5">
@@ -20,7 +22,7 @@
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
                     </select>
-                    <label for="">Image (Link)</label>
+                    <label for="">Image</label>
                     <input type="file" name="image"class="form-control">
                     <label for="">Minutes</label>
                     <input type="text" name="minutes"class="form-control" value="{{ $movie->minutes }}">
@@ -48,5 +50,10 @@
     <script src={{ asset('js/jquery.js') }}></script>
     <script src={{ asset('js/bootstrap.js') }}></script>
     <script src="{{ asset('js/jquery-3.7.0.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.7.0.js') }}"></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('js/responsive.bootstrap5.min.js') }}"></script>
 
 @endsection

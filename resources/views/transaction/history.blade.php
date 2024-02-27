@@ -57,11 +57,13 @@
                         @endif
                     </div>
                 </div>
-                <p class="mt-4">Total Pendapatan :
-                    <b>
-                        Rp.{{ number_format($total, '0', ',', '.') }}
-                    </b>
-                </p>
+                <div class="">
+                    <p class="mt-4">Total Pendapatan :
+                        <b>
+                            Rp.{{ number_format($total, '0', ',', '.') }}
+                        </b>
+                    </p>
+                </div>
                 <table class="table table-bordered mt-3" id="example">
                     <thead class="thead-dark">
                         <tr>

@@ -5,7 +5,7 @@
     <title>Ticket</title>
 </head>
 <style>
-   body {
+    body {
         font-family: 'Arial', sans-serif;
         display: flex;
         align-items: center;
@@ -36,6 +36,10 @@
     .invoice-header {
         text-align: center;
         margin-top: -20px;
+        margin-left: 100px;
+    }
+    .invoice-header b{
+        color: red;
     }
 
     hr {
@@ -64,14 +68,15 @@
         @foreach ($tickets as $ticket)
         <div class="invoice-card">
             <div class="invoice-header">
-                <h2>AniPlex Cinema</h2>
+                <img src="img/logo1.png" width="15%" alt="" style="margin-right: 25em"> 
+                <h2>| AniPlex Cinema | <b>{{ $ticket->seat }} </b></h2>
             </div>
             <hr>
             <div class="invoice-details">        
-                <p><strong>Tanggal</strong>: {{ $ticket->created_at}}</p>
+                <p><strong>Tanggal</strong>: {{ $ticket->created_at->format('Y-m-d')}}</p>
                 <p><strong>Film</strong>: {{ $purchase->movie->name }}</p>
                 <p><strong>Waktu</strong>: {{ $purchase->time }}</p>
-                <p><strong>Seats</strong>: {{ $ticket->seat }} </p>
+                <p><strong>Seats</strong>: {{ $ticket->seat }}</p>
                 <p><strong>Invoice</strong>: {{ $ticket->code }} </p>
             </div>
         </div>

@@ -57,8 +57,12 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/admin/edit{movie}', [AdminController::class, 'editMovie'])->name('editMovie');
         Route::get('/admin/hapus/{movie}', [AdminController::class, 'hapus'])->name('hapus');
         Route::post('/admin/deleteterpilih', [AdminController::class, 'deleteterpilih'])->name('deleteterpilih');
-        Route::get('/admin/tambah-user', [AdminController::class, 'tambahuser'])->name('tambahuser');
-    
+        Route::get('/admin/dashboard-user', [AdminController::class, 'formUser'])->name('formUser');
+        Route::get('/admin/tambah-user', [AdminController::class, 'formTambahUser'])->name('formTambahUser');
+        Route::post('/admin/tambah-user', [AdminController::class, 'tambahUser'])->name('tambahUser');
+        Route::get('/admin/edit-user/{user}', [AdminController::class, 'formEditUser'])->name('formEditUser');
+        Route::post('/admin/edit-user/{user}', [AdminController::class, 'editUser'])->name('editUser');
+        Route::get('/admin/delete-user/{user}', [AdminController::class, 'deleteUser'])->name('deleteUser');
     });
     
     Route::middleware(['checkRole:owner'])->group(function () {

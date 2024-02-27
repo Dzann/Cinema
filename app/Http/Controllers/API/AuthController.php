@@ -87,4 +87,6 @@ class AuthController extends Controller
             return redirect()->back()->with('message', 'Anda tidak bisa mengakses ini');
         }
     }
+
+   
 }

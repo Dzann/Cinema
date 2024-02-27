@@ -26,7 +26,7 @@ class TransactionHistoryController extends Controller
             return \Carbon\Carbon::parse($history->created_at)->format('d-m-Y');
         })->map(function ($dailyHistories) {
             return [
-                'date' => $dailyHistories->first()->created_at, // Use any date from the group
+                'date' => $dailyHistories->first()->created_at,
                 'total' => $dailyHistories->sum('total'),
             ];
         });

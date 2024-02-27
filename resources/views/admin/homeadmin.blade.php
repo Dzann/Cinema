@@ -22,15 +22,6 @@
 <body>
     @include('layout.navigationbar')
 
-    {{-- /GAK BERFUNGSI/ --}}
-    {{-- <form action="{{ route('deleteterpilih') }}" method="POST" id="deleteForm">
-        @csrf
-        <button type="button" id="checkAllBtn" class="btn btn-primary">Check All</button>
-        <button type="button" id="uncheckAllBtn" class="btn btn-warning">Uncheck All</button>
-        <button type="submit" class="btn btn-danger" onclick="return-confirm('Yakin mau hapus data ini yagesya?')">Delete Selected Items</button>
-        <!-- ... rest of the code ... -->
-    </form> --}}
-
     <div class="container mt-4" style="align-items: center">
         <h2 class="text-center">Home Admin</h2>
         @if (session('message'))
@@ -40,6 +31,7 @@
         @endif
         <a href="{{ route('tambahmovie') }}" class="btn bg-info mt-2" style="margin-left: 20px">Tambah Movie</a>
     </div>
+    
     <div class="container mt-3 mb-5">
         <div class="card mt-1">
             <div class="card-body">
@@ -72,8 +64,8 @@
                                 <td>
                                     <div class="d-flex gap-1">
                                         <a href="{{ route('edit', $d->id) }}" class="btn btn-info ">Edit</a>
-                                        <a href="{{ route('hapus', $d->id) }}" class="btn btn-secondary"
-                                            onclick="return confirm('Yakin mau hapus data ini?')">Hapus</a>
+                                        <a href="{{ route('masuk', $d->id) }}" class="btn btn-secondary"
+                                            onclick="return confirm('Yakin mau Memasukan data ini ?')">Masukan</a>
                                     </div>
                                 </td>
                             </tr>
@@ -88,6 +80,7 @@
     </script>
     <script src={{ asset('js/jquery.js') }}></script>
     <script src={{ asset('js/bootstrap.js') }}></script>
+    <script src="{{ asset('js/jquery-3.7.0.js') }}"></script>
 </body>
 
 </html>
