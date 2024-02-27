@@ -80,11 +80,23 @@ class AdminController extends Controller
         return redirect()->route('homeadmin')->with('message','Movie Berhasil di edit');
     }
 
-    function hapus(movie $movie) {
-        $movie->delete();
-        $user = Auth::user();
+    function trash()
+    {
+        $movie = Movie::all();
+        return view('admin.trashAdmin',compact('movie'));
+    }
 
+    function hapus(movie $movie) {
+        $movie->update([
+            'status' => 'upcoming',
+        ]);
         return redirect()->route('homeadmin')->with('message', 'Berhasil Hapus');
+    }
+    public function masuk(Movie $movie) {
+        $movie->update([
+            'status' => 'ongoing',
+        ]);
+        return redirect()->route('trash')->with('message', 'Berhasil Memasukan');
     }
     
     public function tambahuser(Request $request)  {

@@ -17,6 +17,16 @@
             @endif
             <h3 class="text-center my-4">List Movie</h3>
             <div class="row">
+                <div class="col-3 offset-9 text-right">
+                    <form action="{{ route('cari') }}" method="get" class="form-inline">
+                        <div class="input-group">
+                            <input type="text" name="cari" placeholder="Cari Movie...." id="cari" class="form-control">
+                            <button type="submit" class="btn btn-info">Cari</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
                 <h5>Movie Yang Sedang Tayang</h5>
                 @foreach ($movie as $cinema)
                     @if ($cinema->status == 'ongoing')

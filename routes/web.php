@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('create-order', [ConfirmOrderController::class, 'order'])->name('createOrder');
         Route::get('transaction/{id}', [ConfirmOrderController::class, 'show'])->name('transaction');
         Route::get('ticket', [TransactionHistoryController::class, 'ticket'])->name('ticket');
+        Route::get('cari', [MovieController::class, 'cari'])->name('cari');
     
     });
     
@@ -48,6 +49,8 @@ Route::middleware(['auth'])->group(function () {
     // Admin routes disini wak
     Route::middleware(['checkRole:admin'])->group(function () {
         Route::get('/admin/dashboard', [AdminController::class, 'homeadmin'])->name('homeadmin');
+        Route::get('/admin/trash', [AdminController::class, 'trash'])->name('trash');
+        Route::get('/admin/masuk/{movie}', [AdminController::class, 'masuk'])->name('masuk');
         Route::get('/admin/tambahmovie', [AdminController::class, 'tambahmovie'])->name('tambahmovie');
         Route::post('/admin/posttambahmovie', [AdminController::class, 'posttambahmovie'])->name('posttambahmovie');
         Route::get('/admin/edit-{movie}', [AdminController::class, 'edit'])->name('edit');

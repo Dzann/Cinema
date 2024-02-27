@@ -36,4 +36,13 @@ class MovieController extends Controller
             'movie_image' => $movie_image,
         ], compact('movie'));
     }
+
+    public function cari(Request $request)
+    {
+        $cari = $request->input('cari');
+
+        $movie = Movie::where('name', 'like', '%' . $cari. '%')->get();
+
+        return view('movie.index', ['movie' => $movie]);
+    }
 }

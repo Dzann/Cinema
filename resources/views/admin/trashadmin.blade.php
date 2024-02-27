@@ -57,7 +57,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($movie->where('status', 'ongoing') as $d)
+                        @foreach ($movie->where('status', 'upcoming') as $d)
                             <tr>
                                 <td>
                                     {{ $loop->iteration }}
@@ -72,8 +72,8 @@
                                 <td>
                                     <div class="d-flex gap-1">
                                         <a href="{{ route('edit', $d->id) }}" class="btn btn-info ">Edit</a>
-                                        <a href="{{ route('hapus', $d->id) }}" class="btn btn-secondary"
-                                            onclick="return confirm('Yakin mau hapus data ini?')">Hapus</a>
+                                        <a href="{{ route('masuk', $d->id) }}" class="btn btn-secondary"
+                                            onclick="return confirm('Yakin mau Memasukan data ini ?')">Masukan</a>
                                     </div>
                                 </td>
                             </tr>

@@ -48,6 +48,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="adminDropdown">
                         <a href="{{ route('homeadmin') }}" class="dropdown-item">Home Admin</a>
+                        <a href="{{ route('trash') }}" class="dropdown-item">Trash Admin</a>
                         <!-- Add more admin-related links if needed -->
                     </div>
                 </li>
