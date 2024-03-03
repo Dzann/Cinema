@@ -23,7 +23,15 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect()->route('movie');
+                if (auth()->user()->role == 'admin') {
+                    # code...
+                    return redirect()->route('homeadmin')->with('message', 'Akses ditolak');
+                } elseif (auth()->user()->role == 'user') {
+                    # code...
+                    return redirect()->route('movie')->with('message', 'Akses ditolak');
+                } else {
+                    return redirect()->route('owner.dashboard')->with('message', 'Akses ditolak');
+                }
             }
         }
 

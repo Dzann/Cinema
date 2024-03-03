@@ -7,6 +7,7 @@ use App\Models\Movie;
 use App\Models\Purchase;
 use App\Models\PurchaseTicket;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class SeatSelectionController extends Controller
@@ -16,6 +17,11 @@ class SeatSelectionController extends Controller
         $movie_id = $request->movie_id;
         $movie_name = $request->movie_name;
         $time = $request->time;
+
+        // Reset kursi setiap pukul 12 malam
+        if (Carbon::now()->format('H:i') === '00:00') {
+            PurchaseTicket::where('created_at', '<', Carbon::now()->subDay())->delete();
+        }
 
         if (!empty($movie_id) && !empty($time)) {
             $purchase = Purchase::where([

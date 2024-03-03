@@ -24,7 +24,15 @@ class CheckRole
             return $next($request);
         }
 
-        // Tidak diizinkan, redirect atau berikan respon sesuai kebijakan Anda
-        return redirect()->route('movie')->with('error', 'Akses Ditolak');
+        if (auth()->user()->role == 'admin') {
+            # code...
+            return redirect()->route('homeadmin')->with('message', 'Akses ditolak');
+        } elseif (auth()->user()->role == 'user') {
+            # code...
+            return redirect()->route('movie')->with('message', 'Akses ditolak');
+        } else {
+            return redirect()->route('owner.dashboard')->with('message', 'Akses ditolak');
+        }
+        // return redirect()->route('movie')->with('message', 'Akses Ditolak');
     }
 }

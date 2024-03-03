@@ -17,11 +17,11 @@
                     <label for="">Username</label>
                     <input type="text" name="username"class="form-control" value="{{ $user->username }}" required>
                     <label for="">password</label>
-                    <input type="password" name="password"class="form-control" value="{{ $user->password }}" required>
+                    <input type="password" name="password"class="form-control" placeholder="Mohon isi kembali password atau ubah password" required>
                     <label for="">Role</label>
                     <select name="role" id="" class="form-control">
                         <option value="user">kasir</option>
-                        <option value="admin">Admin</option>
+                        <option value="owner">Owner</option>
                     </select>
                     @if (session('message'))
                         <div class="alert alert-dark">

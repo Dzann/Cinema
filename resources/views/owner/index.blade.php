@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'History Transactions')
+@section('title', ' Aktivitas')
 
 @section('body')
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
@@ -11,8 +11,13 @@
 
     <div class="container mt-2 mb-4">
         <div class="card shadow mt-3">
+            @if (session('message'))
+            <div class="alert alert-dark">
+                {{ session('message') }}
+            </div>
+        @endif
             <div class="card-body">
-                <h1 class="card-title">Log Activity</h1>
+                <h1 class="card-title">Aktivitas</h1>
 
                 <form action="{{ route('filter') }}" method="get" class="form-group mt-4">
                     @csrf
@@ -32,8 +37,8 @@
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">User</th>
-                            <th scope="col">Log Activity</th>
-                            <th scope="col">Date time</th>
+                            <th scope="col">Aktivitas</th>
+                            <th scope="col">Jam</th>
                         </tr>
                     </thead>
                     <tbody>

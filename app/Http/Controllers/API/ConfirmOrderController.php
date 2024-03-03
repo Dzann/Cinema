@@ -22,7 +22,13 @@ class ConfirmOrderController extends Controller
         $seats = $request->seats;
         // dd($request->all());
 
-        $ticketPrice = 50000;
+        // $ticketPrice = 50000;
+        $day = date('l');
+        if ($day == 'Saturday' || $day == 'Sunday') {
+            $ticketPrice = 60000;
+        } else {
+            $ticketPrice = 50000;
+        }
         $fee = 2000;
 
         $result = explode(',', $seats);
@@ -32,6 +38,7 @@ class ConfirmOrderController extends Controller
         $total = $totalTicketPrice + $totalfee;
         if ($seats != null) {
             return view('movie.confirm_order', [
+                'ticketPrice' => $ticketPrice,
                 'movie' => $movie,
                 'time' => $time,
                 'seats' => $seats,
@@ -57,7 +64,7 @@ class ConfirmOrderController extends Controller
 
         if (!empty($movie_id) && !empty($time) && !empty($total) && !empty($cash)) {
             if ($cash < $total) {
-                return back()->withErrors(['message' => 'Uang Anda Kurang']);            
+                return back()->withErrors(['message' => 'Uang Anda Kurang']);
             } elseif ($cash >= $total) {
                 $purchase = Purchase::create([
                     'movie_id' => $movie_id,
@@ -67,29 +74,29 @@ class ConfirmOrderController extends Controller
                     'cash' => $cash,
                     'created_by' => $usercreate,
                 ]);
-    
+
                 $orders = explode(',', $request->seats);
-    
+
                 foreach ($orders as $order) {
                     $code = Str::random(6);
                     PurchaseTicket::create([
                         'purchase_id' => $purchase->id,
                         'seat' => $order,
-                        'code' => 'INV'. $code,
+                        'code' => 'INV' . $code,
                     ]);
                 }
-    
+
                 // Log::create([
                 //     'activity' => auth()->user()->username.' melakukan transaksi ',
                 //     'user_id' => auth()->user()->id,
                 // ]);
-    
+
                 $change = $cash - $total;
 
-    
+
                 $this->saveHistory($movie_id, date('Y-m-d'), $time, $total, $seats, $usercreate, $change, $cash);
-    
-                
+
+
                 return view('transaction.transac', [
                     'movie_name' => $movie_name,
                     'movie_id' => $movie_id,
@@ -100,7 +107,7 @@ class ConfirmOrderController extends Controller
                     'seats' => $seats,
                     'kembalian' => $change,
                     'id' => $purchase->id,
-                ])->with('message','pesanan berhasil dibuat!');
+                ])->with('message', 'pesanan berhasil dibuat!');
             }
         } else {
             return redirect()->back()->with([
@@ -108,7 +115,7 @@ class ConfirmOrderController extends Controller
             ]);
         }
     }
-    
+
     public function saveHistory($movieId, $date, $time, $total, $seats, $userId, $change, $cash)
     {
         $history = History::create([

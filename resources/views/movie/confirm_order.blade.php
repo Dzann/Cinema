@@ -38,16 +38,16 @@
                     <hr style="max-width: 400px" />
                     <div class="row py-1" style="max-width: 400px">
                         <div class="col-6 text-start">Harga Tiket</div>
-                        <div class="col text-start">Rp 50.000 x {{ $count }}</div>
+                        <div class="col text-start">Rp.{{ number_format($ticketPrice, 0, ',', '.') }} x {{ $count }}</div>
                     </div>
                     <div class="row py-1" style="max-width: 400px">
                         <div class="col-6 text-start">Biaya Layanan</div>
-                        <div class="col text-start">Rp 2.000</div>
+                        <div class="col text-start">Rp.2.000</div>
                     </div>
                     <hr style="max-width: 400px" />
                     <div class="row py-1" style="max-width: 400px">
                         <div class="col-6 text-start"><b>Total Bayar</b></div>
-                        <div class="col text-start text-danger"><b>Rp. {{ number_format($total, 0, ',', '.') }}</b></div>
+                        <div class="col text-start text-danger"><b>Rp.{{ number_format($total, 0, ',', '.') }}</b></div>
                     </div>
                     <hr style="max-width: 400px" />
                     <div class="row py-1 d-flex align-items-center mb-4" style="max-width: 400px">

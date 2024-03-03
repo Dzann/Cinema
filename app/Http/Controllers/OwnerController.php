@@ -25,6 +25,12 @@ class OwnerController extends Controller
         $start = \Carbon\Carbon::parse($start)->startOfDay();
         $end = \Carbon\Carbon::parse($end)->endOfDay();
 
+        if ($end->lt($start)) {
+            $temp = $start;
+            $start = $end;
+            $end = $temp;
+        }
+        
         $logs = Log::whereBetween('created_at' ,[$start, $end])->get();
         
         return view('owner.index', compact('logs'))->with('message', 'berhasil Memfilter');;

@@ -47,7 +47,7 @@
                         Admin Views
                     </a>
                     <div class="dropdown-menu" aria-labelledby="adminDropdown">
-                        <a href="{{ route('homeadmin') }}" class="dropdown-item">Home Admin</a>
+                        <a href="{{ route('homeadmin') }}" class="dropdown-item">Beranda Admin</a>
                         <a href="{{ route('formUser') }}" class="dropdown-item">Tambah User</a>
                         <a href="{{ route('trash') }}" class="dropdown-item">Trash</a>
                     </div>
@@ -57,10 +57,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-light" href="#" id="adminDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Owner Views
+                        Owner Tampilan
                     </a>
                     <div class="dropdown-menu" aria-labelledby="adminDropdown">
-                        <a href="{{ route('owner.dashboard') }}" class="dropdown-item">Home Owner</a>
+                        <a href="{{ route('owner.dashboard') }}" class="dropdown-item">Beranda Owner</a>
                         <!-- Add more admin-related links if needed -->
                     </div>
                 </li>

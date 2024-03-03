@@ -22,17 +22,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [MovieController::class, 'showMovies'])->name('movie');
-Route::get('/login', [AuthController::class, 'index'])->name('formlogin');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
 
+Route::get('/login', [AuthController::class, 'index'])->name('formlogin')->middleware('guest');
+Route::post('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');;
 Route::middleware(['auth'])->group(function () {
     
     Route::get('/purchases', [TransactionHistoryController::class, 'showPurchases'])->name('history');
     Route::get('/filtered-Chart', [TransactionHistoryController::class, 'filteredChart'])->name('filteredChart');
     Route::get('historyPDF', [TransactionHistoryController::class, 'filterPdf'])->name('filterPdf');
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('change-password', [AuthController::class, 'changePassword'])->name('changePassword');
     Route::post('update-Password', [AuthController::class, 'updatePassword'])->name('updatePassword');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::middleware(['checkRole:user'])->group( function() {
         Route::get('/detailmovie/{movie}', [MovieController::class, 'detailmovie'])->name('detailmovie');
@@ -45,8 +45,6 @@ Route::middleware(['auth'])->group(function () {
     
     });
     
-    
-    // Admin routes disini wak
     Route::middleware(['checkRole:admin'])->group(function () {
         Route::get('/admin/dashboard', [AdminController::class, 'homeadmin'])->name('homeadmin');
         Route::get('/admin/trash', [AdminController::class, 'trash'])->name('trash');

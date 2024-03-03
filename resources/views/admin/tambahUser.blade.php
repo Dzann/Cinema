@@ -21,7 +21,7 @@
                     <label for="">Role</label>
                     <select name="role" id="" class="form-control">
                         <option value="user">kasir</option>
-                        <option value="admin">Admin</option>
+                        <option value="owner">Owner</option>
                     </select>
                     @if (session('message'))
                         <div class="alert alert-dark">

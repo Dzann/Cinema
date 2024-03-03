@@ -11,7 +11,7 @@
         <h5 class="text-center text-muted mb-4">
             {{ $date }}<span class="mx-3">|</span> {{ $time_choose }}
         </h5>
-        <div class="card shadow m-5 p-2">
+        <div class="card bg-secondary text-light shadow m-5 p-2">
             <div class="card-body">
                 <h2 class="text-center">Layar Utama</h2>
             </div>

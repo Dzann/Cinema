@@ -15,7 +15,7 @@ class CreateHistoriesTable extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('movie_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('movie_id')->constrained()->cascadeOnUpdate();
             $table->string('date');
             $table->string('time');
             $table->integer('total');

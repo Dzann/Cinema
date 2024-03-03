@@ -41,7 +41,7 @@
                             <th>No</th>
                             <th>username</th>
                             <th>Role</th>
-                            <th>password</th>
+                            {{-- <th>password</th> --}}
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -53,10 +53,10 @@
                                 </td>
                                 <td>{{ $d->username }}</td>
                                 <td>{{ $d->role }}</td>
-                                <td>{{ $d->password }}</td>
+                                {{-- <td>{{ $d->password }}</td> --}}
                                 <td>
                                     <div class="d-flex gap-1">
-                                        {{-- <a href="{{ route('formEditUser', $d->id) }}" class="btn btn-info ">Ubah</a> --}}
+                                        <a href="{{ route('formEditUser', $d->id) }}" class="btn btn-info ">Ubah</a>
                                         <a href="{{ route('deleteUser', $d->id) }}" class="btn btn-secondary"
                                             onclick="return confirm('Yakin mau menghapus data ini ?')">hapus</a>
                                     </div>

@@ -107,13 +107,14 @@ class AdminController extends Controller
 
     public function formUser()
     {
-        $user = User::all();
+        $user = User::where('role', '!=', 'admin')->get();
+        // $user = User::all();
 
         return view('admin.adminUser', ['user' => $user]);
     }
     public function formTambahUser()
     {
-        $user = User::all();
+        $user = User::where('role', '!=', 'admin')->get();
 
         return view('admin.tambahUser', ['user' => $user]);
     }
@@ -147,17 +148,15 @@ class AdminController extends Controller
     {
         $data =  $request->validate([
             "username" => "required",
-            "passord" => "required",
+            "password" => "required",
             "role" => "required",
         ]);
 
-        if (User::where('username', $request->username)->exists()) {
-            return redirect()->back()->with('message', 'Username tidak tersedia');
-        } else {
-            $user->update($data);
-        }
+        $data['password'] = bcrypt($request->password);
+        
+        $user->update($data);
 
-        return redirect()->route('formuser')->with('message', 'user Berhasil di edit');
+        return redirect()->route('formUser')->with('message', 'user Berhasil di edit');
     }
 
     public function deleteUser(User $user)
